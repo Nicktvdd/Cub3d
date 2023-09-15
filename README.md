@@ -1,4 +1,4 @@
-# Cub3d
+# Cub3d :godmode:
 
 1. git clone repo
 2. git checkout -b 'BranchName'
