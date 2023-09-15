@@ -14,3 +14,6 @@
 
 Made with MLX42:
 https://github.com/codam-coding-college/MLX42
+
+And in collaboration with:
+@jestebanpelaez18
