@@ -11,3 +11,6 @@
 9. git merge BranchName
 10. git push
 11. git checkout BranchName
+
+Made with MLX42:
+https://github.com/codam-coding-college/MLX42
