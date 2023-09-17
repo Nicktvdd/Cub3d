@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/15 15:32:59 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:22:24 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "cub3d.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	printf("Hi i'm working over here!\n");
+
+	if (argc > 2)
+		error_msg("Error, number of arguments invalid");
+	if (argc == 1)
+		error_msg("Error, we need a map");
 	return (0);
 }
