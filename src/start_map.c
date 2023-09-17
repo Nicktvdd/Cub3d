@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   start_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/17 19:00:11 by jpelaez-         ###   ########.fr       */
+/*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
+/*   Updated: 2023/09/17 19:01:42 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3d.h"
 
-#ifndef CUB3D_H
-# define CUB3D_H
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "MLX42/MLX42.h"
-#define WIDTH 256
-#define HEIGHT 256
-
-
-
-typedef struct s_data
+static int	check_file(int argc, char **argument)
 {
-
-}   t_data;
-
-
-/*Map tools*/
-void	init_map(t_list *game, int argc, char **argv);
-
-/*Error tools*/
-void	error_msg(char *msg);
-
-
-#endif
+	if (!ft_strstr(argument[1], ".cub"))
+		return (0);
+	return (1);
+}
+void	init_map(t_list *game, int argc, char **argv)
+{
+    if (!check_file(argc, argv))
+		error_msg("Error, invalid file format");
+    
+}
