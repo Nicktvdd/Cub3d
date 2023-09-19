@@ -1,9 +1,12 @@
 NAME	:= cub3d
+
+LIBFT_DIR = ./lib/libft/
 SRC_DIR	:= ./src
 LIBMLX	:= ./lib/MLX42
+VPATH = src:libft
 
-OBJ		:= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJ_DIR	:= obj
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 INC		:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
@@ -22,6 +25,7 @@ libmlx:
 	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJ)
+	make -C $(LIBFT_DIR)
 	cc $(C_FLAGS) $(OBJ) -o $(NAME) $(INC) $(LIBS) $(O_FLAGS)
 
 $(OBJ_DIR)/%.o: %.c
@@ -36,6 +40,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
