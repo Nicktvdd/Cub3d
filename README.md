@@ -1,4 +1,4 @@
-# Cub3d :godmode:
+# Cub3d :godmode: (PROJECT IN PROGRESS)
 
 1. git clone repo
 2. git checkout -b 'BranchName'
