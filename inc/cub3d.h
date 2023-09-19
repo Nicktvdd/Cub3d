@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/09/17 19:00:11 by jpelaez-         ###   ########.fr       */
+=======
+/*   Updated: 2023/09/19 15:21:21 by nvan-den         ###   ########.fr       */
+>>>>>>> 48588e1160a645bfb470740e51c9f1d470fbc290
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +26,7 @@
 #define HEIGHT 256
 
 
+<<<<<<< HEAD
 
 typedef struct s_data
 {
@@ -37,3 +42,6 @@ void	error_msg(char *msg);
 
 
 #endif
+=======
+#endif
+>>>>>>> 48588e1160a645bfb470740e51c9f1d470fbc290
