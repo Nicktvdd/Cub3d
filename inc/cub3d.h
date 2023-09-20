@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/20 15:37:06 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:21:54 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 typedef struct s_data
 {
 	int	fd;
+	char 	**texture;
+	char	**color;
 
 }		t_data;
 

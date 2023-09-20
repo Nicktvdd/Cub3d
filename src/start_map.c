@@ -6,11 +6,39 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/20 15:37:41 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:13:48 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	data_texture(char *line, char **texture)
+{
+	char	**info;
+
+	info = ft_split(line, " ");
+	if (!info[0])
+		return (0);
+}
+
+static int	parse_map_info(t_data *data, int fd)
+{
+	char	*line;
+
+	data->texture = (char **)malloc(sizeof(char *) * 5);
+	if (!data->texture)
+		return (0);
+	while (42)
+	{
+		line = get_next_line(fd);
+		if (!data_texture(line, data->texture))
+		{
+			free(line);
+			return (0);
+		}
+	}
+	return (1);
+}
 
 static int	check_file(char **argument)
 {
@@ -26,8 +54,8 @@ void	init_map(t_data *data, char **argv)
 	data->fd = open(argv[1], O_RDONLY);
 	if (data->fd == -1)
 		error_msg("Error file descriptor");
-	// if (!parse_map_info(data->fd))
-	// 	error_msg("wrong map information");
+	if (!parse_map_info(data, data->fd))
+		error_msg("wrong map information");
 	// if (!parse_map(data->fd))
 	// 	error_msg("Invalid map");
 }
