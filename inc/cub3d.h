@@ -6,16 +6,17 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/20 15:08:27 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:37:06 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
+# include "../libraries/libft/libft.h"
+# include "../libraries/get_next_line/get_next_line.h"
 # include "MLX42/MLX42.h"
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -29,7 +30,12 @@ typedef struct s_data
 }		t_data;
 
 /*Map tools*/
-void	init_map(t_data *game, int argc, char **argv);
+void	init_map(t_data *game, char **argv);
+
+
+/*Parse utils*/
+
+int	ft_strstr(char *big, char *little);
 
 /*Error tools*/
 void	error_msg(char *msg);

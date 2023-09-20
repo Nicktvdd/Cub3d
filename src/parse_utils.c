@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/20 15:36:53 by jpelaez-         ###   ########.fr       */
+/*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
+/*   Updated: 2023/09/20 15:33:45 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+int	ft_strstr(char *big, char *little)
 {
-	t_data data;
+	size_t	j;
 
-	if (argc > 2)
-		error_msg("Error, number of arguments invalid");
-	if (argc == 1)
-		error_msg("Error, we need a map");
-	init_map(&data, argv);
+	j = 0;
+	if (ft_strlen(little) == 0)
+		return (0);
+	while (*big != '\0')
+	{
+		if (*little == *big)
+		{
+			j = 1;
+			while (little[j] == big[j] && little[j] != '\0')
+			{
+				j++;
+			}
+			if (little[j] == '\0')
+				break ;
+		}
+		big++;
+	}
+	if (little[j] == '\0' && big[j] == '\0')
+		return (1);
 	return (0);
 }

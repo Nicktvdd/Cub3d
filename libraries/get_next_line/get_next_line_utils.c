@@ -6,13 +6,13 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:46:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/12/05 15:44:54 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:48:35 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_2(const char *str)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr_2(char *str, int c)
 {
 	if ((unsigned char)c == '\0')
 		return (str);
@@ -37,7 +37,7 @@ char	*ft_strchr(char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_2(char *s1, char *s2)
 {
 	char	*s3;
 	size_t	i;
@@ -47,7 +47,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (0);
 	i = 0;
 	j = 0;
-	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s3 = (char *)malloc(sizeof(char) * (ft_strlen_2(s1) + ft_strlen_2(s2) + 1));
 	if (s3 == NULL)
 		return (0);
 	while (s1[i] != '\0')
@@ -62,7 +62,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (s3);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr_2(char *s, unsigned int start, size_t len)
 {
 	char	*s2;
 	size_t	i;
@@ -82,7 +82,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (s2);
 }
 
-char	*ft_strdup(char *src, size_t destlen)
+char	*ft_strdup_2(char *src, size_t destlen)
 {
 	int		i;
 	char	*dest;

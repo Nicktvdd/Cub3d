@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:53:52 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/12/14 15:52:39 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:50:15 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*read_line(int fd, char *saved)
 	if (buffer == NULL)
 		return (0);
 	byte_r = 1;
-	while (!(ft_strchr(saved, '\n')) && byte_r != 0)
+	while (!(ft_strchr_2(saved, '\n')) && byte_r != 0)
 	{
 		byte_r = read(fd, buffer, BUFFER_SIZE);
 		if (byte_r == -1)
@@ -30,7 +30,7 @@ static char	*read_line(int fd, char *saved)
 			return (NULL);
 		}
 		buffer[byte_r] = '\0';
-		saved = ft_strjoin(saved, buffer);
+		saved = ft_strjoin_2(saved, buffer);
 	}
 	free(buffer);
 	return (saved);
@@ -48,7 +48,7 @@ static char	*get_line(char *sv)
 		i++;
 	if (sv[i] == '\n')
 		i++;
-	line = ft_strdup(sv, i);
+	line = ft_strdup_2(sv, i);
 	return (line);
 }
 
@@ -67,7 +67,7 @@ static char	*next_line(char *sv)
 	}
 	if (sv[i] == '\n')
 		i++;
-	new_saved = ft_substr(sv, i, ft_strlen(sv) - i);
+	new_saved = ft_substr_2(sv, i, ft_strlen_2(sv) - i);
 	return (new_saved);
 }
 

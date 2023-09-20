@@ -1,8 +1,9 @@
 NAME	:= cub3d
 
-LIBFT_DIR = ./lib/libft/
+LIBFT_DIR = ./libraries/libft/
+LIBFT := $(LIBFT_DIR)/libft.a
 SRC_DIR	:= ./src
-LIBMLX	:= ./lib/MLX42
+LIBMLX	:= ./libraries/MLX42
 VPATH = src:libft
 HEADER := ./inc
 
@@ -15,12 +16,12 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew
 O_FLAGS	:= #-DDEBUG=1
 C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 
-SRC		:= cub3d.c \
+SRC		:= cub3d.c parse_utils.c\
 			error_msg.c start_map.c\
 
 DEP		:= $(OBJ:.o=.d)
 
-GNL_DIR = ./lib/get_next_line/
+GNL_DIR = ./libraries/get_next_line/
 GNL = $(GNL_DIR)/get_next_line.c
 GNL_UTILS = $(GNL_DIR)/get_next_line_utils.c
 
@@ -34,7 +35,7 @@ libmlx:
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT_DIR)
-	cc $(C_FLAGS) $(INC) $(OBJ) $(LIBS) $(GNL) $(GNL_UTILS) $(O_FLAGS) -o $(NAME) 
+	cc $(C_FLAGS) $(INC) $(OBJ) $(LIBS) $(GNL) $(GNL_UTILS) $(LIBFT) $(O_FLAGS) -o $(NAME) 
 
 $(OBJ_DIR)/%.o: %.c
 	mkdir -p $(OBJ_DIR)

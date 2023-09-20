@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:02:13 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/12/05 16:44:56 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:48:37 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strchr(char *str, int c);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strdup(char *src, size_t destlen);
+char	*ft_strchr_2(char *str, int c);
+char	*ft_strjoin_2(char *s1, char *s2);
+char	*ft_substr_2(char *s, unsigned int start, size_t len);
+char	*ft_strdup_2(char *src, size_t destlen);
 
-size_t	ft_strlen(const char *str);
+size_t	ft_strlen_2(const char *str);
 
 #endif
