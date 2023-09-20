@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/17 19:01:42 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:19:01 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@ static int	check_file(int argc, char **argument)
 		return (0);
 	return (1);
 }
-void	init_map(t_list *game, int argc, char **argv)
+void	init_map(t_data *data, int argc, char **argv)
 {
     if (!check_file(argc, argv))
 		error_msg("Error, invalid file format");
-    
+    data->fd = open(argv[1],O_RDONLY);
+	if(data->fd == -1)
+		error_msg("Error file descriptor");
+	if(!parse_map_info(data->fd))
+		error_msg("wrong map information");
+	if(!parse_map(data->fd))
+		error_msg("Invalid map");
 }

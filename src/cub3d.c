@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/17 18:57:27 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:20:15 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	main(int argc, char **argv)
 		error_msg("Error, number of arguments invalid");
 	if (argc == 1)
 		error_msg("Error, we need a map");
-	start_map(&data, argc, argv);
+	init_map(&data, argc, argv);
 	return (0);
 }
