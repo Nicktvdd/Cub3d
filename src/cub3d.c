@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/21 19:20:47 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/21 20:16:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,55 @@
 #include <MLX42/MLX42.h>
 
 static mlx_image_t* image;
-int	px, py;
-
-
-// -----------------------------------------------------------------------------
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
     return (r << 24 | g << 16 | b << 8 | a);
 }
+// -----------------------------------------------------------------------------
+#define mapX  8      //map width
+#define mapY  8      //map height
+#define mapS 64      //map cube size
+int map[]=           //the map array. Edit to change level but keep the outer walls
+{
+	1,1,1,1,1,1,1,1,
+	1,0,1,0,0,0,0,1,
+	1,0,1,0,0,0,0,1,
+	1,0,1,0,0,0,0,1,
+	1,0,0,0,0,0,0,1,
+	1,0,0,0,0,1,0,1,
+	1,0,0,0,0,0,0,1,
+	1,1,1,1,1,1,1,1,
+};
+
+void draw_map2D()
+{
+	int x,y,xo,yo;
+	x = 0;
+	y = 0;
+	xo = 0;
+	yo = 0;
+	
+	uint32_t color;
+	if (map[y*mapX+x] == 1)
+		color = ft_pixel(0, 0 ,0, 0);
+	else
+		color = ft_pixel(1, 1, 1, 1);
+	while (x < mapX)
+	{
+		while (y < mapY)
+		{
+			mlx_put_pixel(image, 0+xo+1, 0+yo+1, color);
+			mlx_put_pixel(image, 0   +xo+1, mapS+yo-1, color);
+			mlx_put_pixel(image,  mapS+xo-1, mapS+yo-1, color);
+			mlx_put_pixel(image, mapS+xo-1, 0   +yo+1, color);
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+}
+// -----------------------------------------------------------------------------
 
 void draw_player(void* param)
 {
@@ -40,7 +80,7 @@ void draw_player(void* param)
 		{
 			uint32_t color = ft_pixel(
 				0xFF, // R
-				0xFF, // G
+				100, // G
 				0xFF, // B
 				0xFF  // A
 			);
@@ -76,7 +116,7 @@ int32_t main(int32_t argc, const char* argv[])
 	mlx_t* mlx;
 
 	// Gotta error check this stuff
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true)))
 	{
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
@@ -94,6 +134,7 @@ int32_t main(int32_t argc, const char* argv[])
 		return(EXIT_FAILURE);
 	}
 	
+	mlx_loop_hook(mlx, draw_map2D, mlx);
 	mlx_loop_hook(mlx, draw_player, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
