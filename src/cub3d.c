@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/21 20:16:57 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/21 20:32:31 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,30 +110,23 @@ void ft_hook(void* param)
 }
 
 // -----------------------------------------------------------------------------
-
+void	error_exit(mlx_t* mlx)
+{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		exit(EXIT_FAILURE);
+}
 int32_t main(int32_t argc, const char* argv[])
 {
 	mlx_t* mlx;
 
 	// Gotta error check this stuff
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true)))
-	{
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
+		error_exit(mlx);
 	if (!(image = mlx_new_image(mlx, 20, 20))) //player size is here
-	{
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
+		error_exit(mlx);
 	if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
-	{
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	
+		error_exit(mlx);
 	mlx_loop_hook(mlx, draw_map2D, mlx);
 	mlx_loop_hook(mlx, draw_player, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
