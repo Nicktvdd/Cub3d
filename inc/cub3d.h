@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/20 16:21:54 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/21 19:22:10 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# define WIDTH 1024
+# define HEIGHT 512
 
 # include "../libraries/libft/libft.h"
 # include "../libraries/get_next_line/get_next_line.h"
@@ -20,8 +22,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define WIDTH 256
-# define HEIGHT 256
 
 typedef struct s_data
 {
