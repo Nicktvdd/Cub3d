@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/21 20:32:31 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/22 09:10:50 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int map[]=           //the map array. Edit to change level but keep the outer wa
 	1,1,1,1,1,1,1,1,
 };
 
-void draw_map2D()
+void draw_map2D(void* param)
 {
-	int x,y,xo,yo;
+	uint32_t x,y,xo,yo;
 	x = 0;
 	y = 0;
 	xo = 0;
@@ -48,9 +48,10 @@ void draw_map2D()
 	
 	uint32_t color;
 	if (map[y*mapX+x] == 1)
-		color = ft_pixel(0, 0 ,0, 0);
+		color = ft_pixel(0xFF, 0xFF ,0xFF, 0xFF);
 	else
 		color = ft_pixel(1, 1, 1, 1);
+	
 	while (x < mapX)
 	{
 		while (y < mapY)
@@ -64,6 +65,7 @@ void draw_map2D()
 		y = 0;
 		x++;
 	}
+	(void)param;
 }
 // -----------------------------------------------------------------------------
 
