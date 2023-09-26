@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/20 16:21:54 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:06:55 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_data
 	int	fd;
 	char 	**texture;
 	char	**color;
+	char	**map;
 
 }		t_data;
 
@@ -38,6 +39,8 @@ void	init_map(t_data *game, char **argv);
 /*Parse utils*/
 
 int	ft_strstr(char *big, char *little);
+int	check_file(char **argument);
+int	is_data(char *line, char **info, t_data *data);
 
 /*Error tools*/
 void	error_msg(char *msg);

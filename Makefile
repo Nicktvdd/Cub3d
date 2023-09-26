@@ -17,7 +17,8 @@ O_FLAGS	:= #-DDEBUG=1
 C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 
 SRC		:= cub3d.c parse_utils.c\
-			error_msg.c start_map.c\
+			error_msg.c start_map.c ft_free.c\
+			parse_map_utils.c\
 
 DEP		:= $(OBJ:.o=.d)
 
