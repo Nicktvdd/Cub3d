@@ -6,13 +6,27 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/26 17:57:24 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:15:30 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	data_texture_color(char *line, t_data *data, int *i)
+/*We have to delete this after test*/
+
+void	print_info(char **argument)
+{
+	int	i;
+
+	i = 0;
+	while (argument[i])
+	{
+		ft_putendl_fd(argument[i], 2);
+		i++;
+	}
+}
+
+int	data_texture_color(char *line, t_data **data, int *i)
 {
 	char	**info;
 
@@ -22,7 +36,7 @@ static int	data_texture_color(char *line, t_data *data, int *i)
 	if (is_data(line, info, data))
 	{
 		free_argt(info);
-		i++;
+		(*i)++;
 		return (1);
 	}
 	else if (is_empty(line))
@@ -37,22 +51,17 @@ static int	data_texture_color(char *line, t_data *data, int *i)
 	}
 }
 
-static int	parse_map_info(t_data *data, int fd)
+int	parse_map_info(t_data *data, int fd)
 {
 	char	*line;
 	int		counter;
 
-	data->texture = (char **)malloc(sizeof(char *) * 5);
-	if (!data->texture)
-		error_msg("Allocation error");
-	data->color = (char **)malloc(sizeof(char *) * 2);
-	if (!data->color)
-		error_msg("Allocation error");
+	line = NULL;
 	counter = 0;
+	line = get_next_line(fd);
 	while (line)
 	{
-		line = get_next_line(fd);
-		if (data_texture_color(line, data, &counter))
+		if (data_texture_color(line, &data, &counter))
 		{
 			if (counter == 6)
 			{
@@ -61,24 +70,27 @@ static int	parse_map_info(t_data *data, int fd)
 			}
 		}
 		free(line);
+		line = get_next_line(fd);
 	}
-	if (counter != 6)
-		return (0);
+	print_info(data->texture);
+	// // print_info(data->color);
+	return (0);
 }
 
-static int	parse_map(int fd)
+char	**parse_map(int fd)
 {
 	char	*line;
 	char	*full_map;
 	char	**final_map;
 
 	full_map = NULL;
+	line = get_next_line(fd);
 	while (line)
 	{
-		line = get_next_line(fd);
 		if (is_map(line))
 			full_map = ft_strjoin(full_map, line);
 		free(line);
+		line = get_next_line(fd);
 	}
 	final_map = ft_split(full_map, '\n');
 	if (!final_map[0])
@@ -89,12 +101,21 @@ static int	parse_map(int fd)
 
 void	init_map(t_data *data, char **argv)
 {
+	int	fd;
+
 	if (!check_file(argv))
 		error_msg("Error, invalid file format");
-	data->fd = open(argv[1], O_RDONLY);
-	if (data->fd == -1)
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
 		error_msg("Error file descriptor");
-	if (!parse_map_info(data, data->fd))
+	data->texture = (char **)malloc(sizeof(char *) * 5);
+	if (!data->texture)
+		error_msg("Allocation error");
+	data->color = (char **)malloc(sizeof(char *) * 2);
+	if (!data->color)
+		error_msg("Allocation error");
+	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
-	data->map = parse_map(data->fd);
+	// data->map = parse_map(fd);
+	close(fd);
 }

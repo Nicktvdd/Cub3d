@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:09:39 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/26 15:10:33 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:14:35 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,10 @@ void	free_argt(char **argument)
 	}
 	free(argument);
 }
+
+void	free_argt_exit(char **argument)
+{
+	free_argt(argument);
+	error_msg("Error, empty map");
+}
+

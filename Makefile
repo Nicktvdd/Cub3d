@@ -14,7 +14,7 @@ INC		:= -I $(HEADER) -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
 
 O_FLAGS	:= #-DDEBUG=1
-C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
 SRC		:= cub3d.c parse_utils.c\
 			error_msg.c start_map.c ft_free.c\

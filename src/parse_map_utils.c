@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/26 17:51:44 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:17:23 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_not_data(char *line)
 {
 	char	**info;
 
-	info = ft_split(line, " ");
+	info = ft_split(line, ' ');
 	if (!info[0])
 		error_msg("Allocation Error");
 	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])) || ft_strnstr(info[0],
