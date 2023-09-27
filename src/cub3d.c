@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/27 14:44:29 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:09:34 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,15 @@ int32_t main(int32_t argc, const char* argv[])
 	mlx_t* mlx;
 
 	// Gotta error check this stuff
+	// Set these values, if necessary, before calling `mlx_init` as they define the behaviour of MLX42.
+
+/* 	MLX_STRETCH_IMAGE = 0,	// Should images resize with the window as it's being resized or not. Default: false
+	MLX_FULLSCREEN,			// Should the window be in Fullscreen, note it will fullscreen at the given resolution. Default: false
+	MLX_MAXIMIZED,			// Start the window in a maximized state, overwrites the fullscreen state if this is true. Default: false
+	MLX_DECORATED,			// Have the window be decorated with a window bar. Default: true
+	MLX_HEADLESS,			// Run in headless mode, no window is created. (NOTE: Still requires some form of window manager such as xvfb)
+	MLX_SETTINGS_MAX,		// Setting count. */
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true))) //create the window
 		error_exit(mlx);
 	if (!(backgr = mlx_new_image(mlx, WIDTH, HEIGHT))) //player size is here
@@ -166,7 +175,6 @@ int32_t main(int32_t argc, const char* argv[])
 	if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
 		error_exit(mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
-
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	(void)argc;
