@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/22 09:10:50 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/27 11:54:12 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,60 @@
 #include <stdbool.h>
 #include <MLX42/MLX42.h>
 
+void	error_exit(mlx_t* mlx);
+
 static mlx_image_t* image;
+static mlx_image_t* backgr;
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
     return (r << 24 | g << 16 | b << 8 | a);
 }
 // -----------------------------------------------------------------------------
-#define mapX  8      //map width
-#define mapY  8      //map height
-#define mapS 64      //map cube size
-int map[]=           //the map array. Edit to change level but keep the outer walls
-{
-	1,1,1,1,1,1,1,1,
-	1,0,1,0,0,0,0,1,
-	1,0,1,0,0,0,0,1,
-	1,0,1,0,0,0,0,1,
-	1,0,0,0,0,0,0,1,
-	1,0,0,0,0,1,0,1,
-	1,0,0,0,0,0,0,1,
-	1,1,1,1,1,1,1,1,
+int map[8][8] = {
+    {1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 0, 1, 0, 0, 0, 0, 1},
+    {1, 0, 1, 0, 0, 0, 0, 1},
+    {1, 0, 1, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 1, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1}
 };
 
-void draw_map2D(void* param)
+/* void	put_big_pixel(uint32_t y, uint32_t x, uint32_t color)
 {
-	uint32_t x,y,xo,yo;
+	while (x < 100)
+	{
+		while (y < 100)
+		{
+				mlx_put_pixel(backgr, x, y, color);
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+} */
+
+void	draw_map2D(void* param)
+{
+	uint32_t 	x;
+	uint32_t	y;
+	uint32_t	wall_color;
+	uint32_t	empty_color;
+	
+	wall_color = ft_pixel(255, 255, 0, 255);
+	empty_color = ft_pixel(0, 0, 0, 255);
 	x = 0;
 	y = 0;
-	xo = 0;
-	yo = 0;
-	
-	uint32_t color;
-	if (map[y*mapX+x] == 1)
-		color = ft_pixel(0xFF, 0xFF ,0xFF, 0xFF);
-	else
-		color = ft_pixel(1, 1, 1, 1);
-	
-	while (x < mapX)
+	while (x < backgr->width)
 	{
-		while (y < mapY)
+		while (y < backgr->height)
 		{
-			mlx_put_pixel(image, 0+xo+1, 0+yo+1, color);
-			mlx_put_pixel(image, 0   +xo+1, mapS+yo-1, color);
-			mlx_put_pixel(image,  mapS+xo-1, mapS+yo-1, color);
-			mlx_put_pixel(image, mapS+xo-1, 0   +yo+1, color);
+			if (map[x][y] == 1)
+				mlx_put_pixel(backgr, x, y, wall_color);
+			else
+				mlx_put_pixel(backgr, x, y, wall_color);
 			y++;
 		}
 		y = 0;
@@ -109,6 +119,13 @@ void ft_hook(void* param)
 		image->instances[0].x -= 2;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 		image->instances[0].x += 2;
+	// mlx_delete_image(mlx, image);
+	// if (!(image = mlx_new_image(mlx, 50, 50))) //player size is here
+	// 	error_exit(mlx);
+	// draw_map2D(mlx);
+	// draw_player(mlx);
+	// if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
+	// 	error_exit(mlx);
 }
 
 // -----------------------------------------------------------------------------
@@ -125,12 +142,18 @@ int32_t main(int32_t argc, const char* argv[])
 	// Gotta error check this stuff
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true)))
 		error_exit(mlx);
-	if (!(image = mlx_new_image(mlx, 20, 20))) //player size is here
+	if (!(backgr = mlx_new_image(mlx, WIDTH, HEIGHT))) //player size is here
 		error_exit(mlx);
+		draw_map2D(mlx);
+	if (mlx_image_to_window(mlx, backgr, (0), (0)) == -1) // player position here
+		error_exit(mlx);
+	if (!(image = mlx_new_image(mlx, 50, 50))) //player size is here
+		error_exit(mlx);
+		draw_player(mlx);
 	if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
 		error_exit(mlx);
-	mlx_loop_hook(mlx, draw_map2D, mlx);
-	mlx_loop_hook(mlx, draw_player, mlx);
+
+	//mlx_loop_hook(mlx, draw_player, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
 	mlx_loop(mlx);
