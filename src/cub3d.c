@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/27 11:54:12 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:22:49 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int map[8][8] = {
     {1, 1, 1, 1, 1, 1, 1, 1}
 };
 
-/* void	put_big_pixel(uint32_t y, uint32_t x, uint32_t color)
+void	put_big_pixel(uint32_t y, uint32_t x, uint32_t color)
 {
-	while (x < 100)
+	while (x < 10)
 	{
-		while (y < 100)
+		while (y < 10)
 		{
 				mlx_put_pixel(backgr, x, y, color);
 			y++;
@@ -49,34 +49,62 @@ int map[8][8] = {
 		y = 0;
 		x++;
 	}
-} */
-
-void	draw_map2D(void* param)
-{
-	uint32_t 	x;
-	uint32_t	y;
-	uint32_t	wall_color;
-	uint32_t	empty_color;
-	
-	wall_color = ft_pixel(255, 255, 0, 255);
-	empty_color = ft_pixel(0, 0, 0, 255);
-	x = 0;
-	y = 0;
-	while (x < backgr->width)
-	{
-		while (y < backgr->height)
-		{
-			if (map[x][y] == 1)
-				mlx_put_pixel(backgr, x, y, wall_color);
-			else
-				mlx_put_pixel(backgr, x, y, wall_color);
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-	(void)param;
 }
+
+void draw_map2D(void* param)
+{
+    uint32_t wall_color = ft_pixel(255, 255, 0, 255);
+    uint32_t empty_color = ft_pixel(0, 0, 0, 255);
+
+    uint32_t i = 0;
+	uint32_t sizeY = HEIGHT / 8;
+	uint32_t sizeX = WIDTH / 8;
+	
+    while (i < backgr->height && i < 8)  // Ensure we stay within bounds of map
+    {
+        uint32_t j = 0;
+        uint32_t y = i * sizeY;
+        while (j < backgr->width && j < 8)  // Ensure we stay within bounds of map
+        {
+            if (map[i][j] == 1)
+            {
+                uint32_t x = j * sizeX;
+                uint32_t draw_y = y;
+                while (draw_y < y + sizeY && draw_y < backgr->height)
+                {
+                    uint32_t draw_x = x;
+                    while (draw_x < x + sizeX && draw_x < backgr->width)
+                    {
+                        mlx_put_pixel(backgr, draw_x, draw_y, wall_color);
+                        draw_x++;
+                    }
+                    draw_y++;
+                }
+            }
+			else
+            {
+                uint32_t x = j * sizeX;
+                uint32_t draw_y = y;
+                while (draw_y < y + sizeY && draw_y < backgr->height)
+                {
+                    uint32_t draw_x = x;
+                    while (draw_x < x + sizeX && draw_x < backgr->width)
+                    {
+                        mlx_put_pixel(backgr, draw_x, draw_y, empty_color);
+                        draw_x++;
+                    }
+                    draw_y++;
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+
+    (void)param;
+}
+
+
 // -----------------------------------------------------------------------------
 
 void draw_player(void* param)
@@ -140,20 +168,18 @@ int32_t main(int32_t argc, const char* argv[])
 	mlx_t* mlx;
 
 	// Gotta error check this stuff
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true)))
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true))) //create the window
 		error_exit(mlx);
 	if (!(backgr = mlx_new_image(mlx, WIDTH, HEIGHT))) //player size is here
 		error_exit(mlx);
-		draw_map2D(mlx);
+	draw_map2D(mlx); // - drawing map
 	if (mlx_image_to_window(mlx, backgr, (0), (0)) == -1) // player position here
 		error_exit(mlx);
 	if (!(image = mlx_new_image(mlx, 50, 50))) //player size is here
 		error_exit(mlx);
-		draw_player(mlx);
+	draw_player(mlx); // - drawing player
 	if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
 		error_exit(mlx);
-
-	//mlx_loop_hook(mlx, draw_player, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
 	mlx_loop(mlx);
