@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/28 14:58:17 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:13:26 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <MLX42/MLX42.h>
+
+#define PLAYERSIZE 50
 
 void	error_exit(mlx_t* mlx);
 static mlx_image_t* image;
@@ -112,6 +114,9 @@ void ft_hook(void* param)
 		mlx_close_window(mlx);
 /* 	if (map[image->instances[0].y / HEIGHT][image->instances[0].x / WIDTH] == 1)
 		move = 0; */
+	if (image->instances[0].y >= HEIGHT - PLAYERSIZE || image->instances[0].x >= WIDTH - PLAYERSIZE || image->instances[0].y <= 0 || image->instances[0].x <= 0)
+		move = 0;
+	printf("image instance\n y: %i\n x: %i\n", image->instances[0].y, image->instances[0].x);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 		image->instances[0].y -= move;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
@@ -141,10 +146,10 @@ int32_t main(int32_t argc, const char* argv[])
 	draw_map2D(mlx); // - drawing map
 	if (mlx_image_to_window(mlx, backgr, (0), (0)) == -1) // player position here
 		error_exit(mlx);
-	if (!(image = mlx_new_image(mlx, 50, 50))) //player size is here
+	if (!(image = mlx_new_image(mlx, PLAYERSIZE, PLAYERSIZE))) //player size is here
 		error_exit(mlx);
 	draw_player(mlx); // - drawing player
-	if (mlx_image_to_window(mlx, image, (WIDTH / 2 - 25 /* half of player */), (HEIGHT / 2 - 25)) == -1) // player position here
+	if (mlx_image_to_window(mlx, image, (WIDTH / 2 - (PLAYERSIZE / 2) /* half of player */), (HEIGHT / 2 - (PLAYERSIZE / 2))) == -1) // player position here
 		error_exit(mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
