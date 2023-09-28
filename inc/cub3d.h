@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/21 19:22:10 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:41:54 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 # define WIDTH 1024
 # define HEIGHT 512
+# define PIXELSIZE 8
 
 # include "../libraries/libft/libft.h"
 # include "../libraries/get_next_line/get_next_line.h"

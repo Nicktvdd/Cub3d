@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/27 16:09:34 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:45:14 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <MLX42/MLX42.h>
 
 void	error_exit(mlx_t* mlx);
-
 static mlx_image_t* image;
 static mlx_image_t* backgr;
 
@@ -37,34 +36,21 @@ int map[8][8] = {
     {1, 1, 1, 1, 1, 1, 1, 1}
 };
 
-void	put_big_pixel(uint32_t y, uint32_t x, uint32_t color)
-{
-	while (x < 10)
-	{
-		while (y < 10)
-		{
-				mlx_put_pixel(backgr, x, y, color);
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-}
+// -----------------------------------------------------------------------------
 
 void draw_map2D(void* param)
 {
 	uint32_t wall_color = ft_pixel(255, 255, 255, 255);
    	uint32_t empty_color = ft_pixel(0, 0, 0, 255);
-
-    uint32_t i = 0;
-	uint32_t sizeY = HEIGHT / 8;
-	uint32_t sizeX = WIDTH / 8;
 	
-    while (i < backgr->height && i < 8)  // Ensure we stay within bounds of map
+    uint32_t i = 0;
+	uint32_t sizeY = HEIGHT / PIXELSIZE;
+	uint32_t sizeX = WIDTH / PIXELSIZE;
+    while (i < backgr->height && i < PIXELSIZE)  // Ensure we stay within bounds of map
     {
         uint32_t j = 0;
         uint32_t y = i * sizeY;
-        while (j < backgr->width && j < 8)  // Ensure we stay within bounds of map
+        while (j < backgr->width && j < PIXELSIZE)  // Ensure we stay within bounds of map
         {
 			uint32_t x = j * sizeX;
 			uint32_t draw_y = y;
@@ -88,9 +74,6 @@ void draw_map2D(void* param)
 
     (void)param;
 }
-
-
-// -----------------------------------------------------------------------------
 
 void draw_player(void* param)
 {
@@ -118,27 +101,25 @@ void draw_player(void* param)
 	(void)param;
 }
 
+// -----------------------------------------------------------------------------
+
 void ft_hook(void* param)
 {
 	mlx_t* mlx = param;
-
+	int move = 2;
+	
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+	if (map[image->instances[0].y / 8][image->instances[0].x / 8] == 1)
+		move = -1;
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 2;
+		image->instances[0].y -= move;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 2;
+		image->instances[0].y += move;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 2;
+		image->instances[0].x -= move;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 2;
-	// mlx_delete_image(mlx, image);
-	// if (!(image = mlx_new_image(mlx, 50, 50))) //player size is here
-	// 	error_exit(mlx);
-	// draw_map2D(mlx);
-	// draw_player(mlx);
-	// if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
-	// 	error_exit(mlx);
+		image->instances[0].x += move;
 }
 
 // -----------------------------------------------------------------------------
@@ -152,15 +133,6 @@ int32_t main(int32_t argc, const char* argv[])
 {
 	mlx_t* mlx;
 
-	// Gotta error check this stuff
-	// Set these values, if necessary, before calling `mlx_init` as they define the behaviour of MLX42.
-
-/* 	MLX_STRETCH_IMAGE = 0,	// Should images resize with the window as it's being resized or not. Default: false
-	MLX_FULLSCREEN,			// Should the window be in Fullscreen, note it will fullscreen at the given resolution. Default: false
-	MLX_MAXIMIZED,			// Start the window in a maximized state, overwrites the fullscreen state if this is true. Default: false
-	MLX_DECORATED,			// Have the window be decorated with a window bar. Default: true
-	MLX_HEADLESS,			// Run in headless mode, no window is created. (NOTE: Still requires some form of window manager such as xvfb)
-	MLX_SETTINGS_MAX,		// Setting count. */
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true))) //create the window
 		error_exit(mlx);
@@ -181,15 +153,3 @@ int32_t main(int32_t argc, const char* argv[])
 	(void)argv;
 	return (EXIT_SUCCESS);
 }
-/* 
-int	main(int argc, char **argv)
-{
-	t_data data;
-
-	if (argc > 2)
-		error_msg("Error, number of arguments invalid");
-	if (argc == 1)
-		error_msg("Error, we need a map");
-	init_map(&data, argv);
-	return (0);
-} */
