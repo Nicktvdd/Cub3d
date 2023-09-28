@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/28 14:45:14 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:58:17 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ void ft_hook(void* param)
 	
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-	if (map[image->instances[0].y / 8][image->instances[0].x / 8] == 1)
-		move = -1;
+/* 	if (map[image->instances[0].y / HEIGHT][image->instances[0].x / WIDTH] == 1)
+		move = 0; */
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 		image->instances[0].y -= move;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
@@ -144,7 +144,7 @@ int32_t main(int32_t argc, const char* argv[])
 	if (!(image = mlx_new_image(mlx, 50, 50))) //player size is here
 		error_exit(mlx);
 	draw_player(mlx); // - drawing player
-	if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
+	if (mlx_image_to_window(mlx, image, (WIDTH / 2 - 25 /* half of player */), (HEIGHT / 2 - 25)) == -1) // player position here
 		error_exit(mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
