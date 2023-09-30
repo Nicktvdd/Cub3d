@@ -1,7 +1,7 @@
 NAME	:= cub3d
 
-LIBFT_DIR = #./libraries/libft/
-LIBFT := #$(LIBFT_DIR)/libft.a
+LIBFT_DIR = ./libraries/libft/
+LIBFT := $(LIBFT_DIR)/libft.a
 SRC_DIR	:= ./src
 LIBMLX	:= ./libraries/MLX42
 VPATH = src:libft
@@ -14,13 +14,15 @@ INC		:= -I $(HEADER) -I $(LIBMLX)/include
 #School Macs#
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
 #For Linux#
-LIBS	:= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+#LIBS	:= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+#MacHome
+LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
 
 O_FLAGS	:= #-DDEBUG=1
 C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
-SRC		:= cub3d.c #parse_utils.c\
-			#error_msg.c #start_map.c\
+SRC		:=  main.c parse_map_utils.c parse_utils.c\
+			error_msg.c ft_free.c start_map.c #cub3d.c\
 
 DEP		:= $(OBJ:.o=.d)
 
@@ -37,7 +39,7 @@ libmlx:
 	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJ)
-	#make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 	cc $(C_FLAGS) $(INC) $(OBJ) $(LIBS) $(GNL) $(GNL_UTILS) $(LIBFT) $(O_FLAGS) -o $(NAME) 
 
 $(OBJ_DIR)/%.o: %.c

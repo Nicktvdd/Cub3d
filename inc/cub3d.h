@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/30 18:38:50 by jpelaez-         ###   ########.fr       */
-=======
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/21 19:22:10 by nvan-den         ###   ########.fr       */
->>>>>>> 004a8a1b79afb0d3770e720219f1f5c37323d9bc
+/*   Updated: 2023/09/30 19:14:15 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +22,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# define SPACES " \f\n\r\t\v"
+# define MAPCODES " 01NSEW"
 
 typedef struct s_data
 {
@@ -42,13 +37,11 @@ typedef struct s_data
 /*Free Stuff*/
 
 void		free_argt(char **argument);
-
 void	free_argt_exit(char **argument);
 
 /*Map tools*/
 void		init_map(t_data *game, char **argv);
 int			is_map(char *line);
-char 		*ft_realloc(char *str, size_t new_size);
 void		get_map_line(char *line, char **temp);
 
 /*Parse utils*/
