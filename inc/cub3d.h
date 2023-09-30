@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/27 15:43:39 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/30 18:38:50 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <unistd.h>
 # define WIDTH 256
 # define HEIGHT 256
+# define SPACES " \f\n\r\t\v"
+# define MAPCODES " 01NSEW"
+
 
 typedef struct s_data
 {
@@ -41,6 +44,8 @@ void	free_argt_exit(char **argument);
 /*Map tools*/
 void		init_map(t_data *game, char **argv);
 int			is_map(char *line);
+char 		*ft_realloc(char *str, size_t new_size);
+void		get_map_line(char *line, char **temp);
 
 /*Parse utils*/
 
@@ -48,6 +53,7 @@ int			ft_strstr(char *big, char *little);
 int			check_file(char **argument);
 int			is_data(char *line, char **info, t_data **data);
 int			is_empty(char *line);
+int			check_delimiter(char c, char *delimiter);
 
 /*Error tools*/
 void		error_msg(char *msg);

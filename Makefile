@@ -11,7 +11,11 @@ OBJ_DIR	:= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 INC		:= -I $(HEADER) -I $(LIBMLX)/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+# LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+#Home
+LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
+
+
 
 O_FLAGS	:= #-DDEBUG=1
 C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g

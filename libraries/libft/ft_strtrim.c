@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:57:39 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 17:08:11 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:12:12 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*s2;
 	int		start;
 	int		end;
-	int		i;
 
-	if (s1 == '\0')
+	if (!s1)
 		return (0);
 	s2 = 0;
 	if (s1 != 0 && set != 0)
 	{
 		end = ft_strlen(s1);
 		start = 0;
-		i = 0;
 		while (s1[start] != '\0' && ft_checkset(s1[start], set) == 1)
 			start++;
 		while (s1[end - 1] && ft_checkset(s1[end - 1], set) == 1 && end

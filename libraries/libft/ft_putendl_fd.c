@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:59:49 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 14:01:06 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:09:45 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putendl_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
-	if (s == '\0')
+	if (!s)
 		return ;
 	while (s[i] != '\0')
 	{

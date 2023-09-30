@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:49:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 13:57:03 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:10:13 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	size_t	i;
 
 	i = 0;
-	if (s == '\0')
+	if (!s)
 		return ;
 	while (s[i] != '\0')
 	{

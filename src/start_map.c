@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:15:30 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/30 18:46:05 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 /*We have to delete this after test*/
 
-void	print_info(char **argument)
+void	print_info(char **data)
 {
 	int	i;
 
 	i = 0;
-	while (argument[i])
+	while (data[i])
 	{
-		ft_putendl_fd(argument[i], 2);
+		ft_putendl_fd(data[i], 2);
 		i++;
 	}
 }
 
-int	data_texture_color(char *line, t_data **data, int *i)
+int	data_texture_color(char *line, t_data *data, int *i)
 {
 	char	**info;
 
 	info = ft_split(line, ' ');
 	if (!info[0])
 		return (0);
-	if (is_data(line, info, data))
+	if (is_data(line, info, &data))
 	{
 		free_argt(info);
 		(*i)++;
@@ -61,7 +61,7 @@ int	parse_map_info(t_data *data, int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (data_texture_color(line, &data, &counter))
+		if (data_texture_color(line, data, &counter))
 		{
 			if (counter == 6)
 			{
@@ -72,8 +72,6 @@ int	parse_map_info(t_data *data, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	print_info(data->texture);
-	// // print_info(data->color);
 	return (0);
 }
 
@@ -83,17 +81,17 @@ char	**parse_map(int fd)
 	char	*full_map;
 	char	**final_map;
 
-	full_map = NULL;
+	full_map = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (is_map(line))
-			full_map = ft_strjoin(full_map, line);
+		if(is_map(line))
+			get_map_line(line, &full_map);
 		free(line);
 		line = get_next_line(fd);
 	}
 	final_map = ft_split(full_map, '\n');
-	if (!final_map[0])
+	if (!final_map[0] || !final_map)
 		free_argt_exit(final_map);
 	free(full_map);
 	return (final_map);
@@ -116,6 +114,7 @@ void	init_map(t_data *data, char **argv)
 		error_msg("Allocation error");
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
-	// data->map = parse_map(fd);
+	data->map = parse_map(fd);
+	print_info(data->map);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:43:38 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/16 14:48:08 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:13:04 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 	size_t	space;
 
-	if (s == '\0')
+	if (!s)
 		return (0);
 	i = start;
 	space = start;
@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		*s2 = '\0';
 		return (s2);
 	}
-	if (s2 == '\0')
+	if (!s2)
 		return (0);
 	while (s[i] != '\0' && i < len + space)
 		s2[j++] = s[i++];

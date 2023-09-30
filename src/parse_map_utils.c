@@ -3,40 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/27 13:17:23 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/30 18:42:42 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_not_data(char *line)
+int is_empty_line(char *line)
 {
-	char	**info;
+	int	i;
 
-	info = ft_split(line, ' ');
-	if (!info[0])
-		error_msg("Allocation Error");
-	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])) || ft_strnstr(info[0],
-			"SO", ft_strlen(info[0])) || ft_strnstr(info[0], "WE",
-			ft_strlen(info[0])) || ft_strnstr(info[0], "EA", ft_strlen(info[0]))
-		|| ft_strnstr(info[0], "F", ft_strlen(info[0])) || ft_strnstr(info[0],
-			"C", ft_strlen(info[0])))
-	{
-		free_argt(info);
-		return (0);
-	}
-	return (1);
-}
-
-int	is_map(char *line)
-{
-	if (is_not_data(line))
-		return (0);
-	else if (is_empty(line))
+	i = 0;
+	if (!line)
 		return (0);
 	else
-		return (1);
+	{
+		while (line[i])
+		{
+			if (!check_delimiter(line[i], " \f\n\r\t\v"))
+				return (1);
+			i++;
+		}
+	}
+	return (0);
+}
+int	is_map(char *line)
+{
+	int i;
+
+	i = 0;
+	if (line[0] == '\n' || !line)
+		return(0);
+	if(!is_empty_line(line))
+		return(0);
+	while(line[i])
+	{
+		if(!check_delimiter(line[i],SPACES) && !check_delimiter(line[i], MAPCODES))
+			return(0);
+		i++;
+	}
+	return(1);
+}
+
+void get_map_line(char *line, char **temp)
+{
+	char *temp2;
+
+	temp2 = ft_strjoin(*temp, line);
+	free(*temp);
+	*temp = temp2;
 }
