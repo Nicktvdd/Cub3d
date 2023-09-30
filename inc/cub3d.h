@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
 /*   Updated: 2023/09/30 18:38:50 by jpelaez-         ###   ########.fr       */
+=======
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
+/*   Updated: 2023/09/21 19:22:10 by nvan-den         ###   ########.fr       */
+>>>>>>> 004a8a1b79afb0d3770e720219f1f5c37323d9bc
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# define WIDTH 1024
+# define HEIGHT 512
 
 # include "../libraries/get_next_line/get_next_line.h"
 # include "../libraries/libft/libft.h"
@@ -20,11 +29,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define WIDTH 256
-# define HEIGHT 256
-# define SPACES " \f\n\r\t\v"
-# define MAPCODES " 01NSEW"
-
 
 typedef struct s_data
 {

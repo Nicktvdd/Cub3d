@@ -3,22 +3,141 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/27 15:30:35 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/30 19:01:18 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <MLX42/MLX42.h>
 
-void	init_data(t_data *data)
+static mlx_image_t* image;
+
+int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-	data->map = NULL;
-	data->texture = NULL;
-	data->color = NULL;
+    return (r << 24 | g << 16 | b << 8 | a);
+}
+// -----------------------------------------------------------------------------
+#define mapX  8      //map width
+#define mapY  8      //map height
+#define mapS 64      //map cube size
+int map[]=           //the map array. Edit to change level but keep the outer walls
+{
+	1,1,1,1,1,1,1,1,
+	1,0,1,0,0,0,0,1,
+	1,0,1,0,0,0,0,1,
+	1,0,1,0,0,0,0,1,
+	1,0,0,0,0,0,0,1,
+	1,0,0,0,0,1,0,1,
+	1,0,0,0,0,0,0,1,
+	1,1,1,1,1,1,1,1,
+};
+
+void draw_map2D()
+{
+	int x,y,xo,yo;
+	x = 0;
+	y = 0;
+	xo = 0;
+	yo = 0;
+	
+	uint32_t color;
+	if (map[y*mapX+x] == 1)
+		color = ft_pixel(0, 0 ,0, 0);
+	else
+		color = ft_pixel(1, 1, 1, 1);
+	while (x < mapX)
+	{
+		while (y < mapY)
+		{
+			mlx_put_pixel(image, 0+xo+1, 0+yo+1, color);
+			mlx_put_pixel(image, 0   +xo+1, mapS+yo-1, color);
+			mlx_put_pixel(image,  mapS+xo-1, mapS+yo-1, color);
+			mlx_put_pixel(image, mapS+xo-1, 0   +yo+1, color);
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+}
+// -----------------------------------------------------------------------------
+
+void draw_player(void* param)
+{
+	uint32_t x;
+	uint32_t y;
+
+	x = 0;
+	y = 0;
+	while (x < image->width)
+	{
+		while (y < image->height)
+		{
+			uint32_t color = ft_pixel(
+				0xFF, // R
+				100, // G
+				0xFF, // B
+				0xFF  // A
+			);
+			mlx_put_pixel(image, x, y, color);
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+	(void)param;
 }
 
+void ft_hook(void* param)
+{
+	mlx_t* mlx = param;
+
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+		image->instances[0].y -= 2;
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+		image->instances[0].y += 2;
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+		image->instances[0].x -= 2;
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		image->instances[0].x += 2;
+}
+
+// -----------------------------------------------------------------------------
+void	error_exit(mlx_t* mlx)
+{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		exit(EXIT_FAILURE);
+}
+int32_t main(int32_t argc, const char* argv[])
+{
+	mlx_t* mlx;
+
+	// Gotta error check this stuff
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true)))
+		error_exit(mlx);
+	if (!(image = mlx_new_image(mlx, 20, 20))) //player size is here
+		error_exit(mlx);
+	if (mlx_image_to_window(mlx, image, (WIDTH / 2), (HEIGHT / 2)) == -1) // player position here
+		error_exit(mlx);
+	mlx_loop_hook(mlx, draw_map2D, mlx);
+	mlx_loop_hook(mlx, draw_player, mlx);
+	mlx_loop_hook(mlx, ft_hook, mlx);
+
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	(void)argc;
+	(void)argv;
+	return (EXIT_SUCCESS);
+}
+/* 
 int	main(int argc, char **argv)
 {
 	t_data data;
@@ -30,4 +149,4 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	init_map(&data, argv);
 	return (0);
-}
+} */

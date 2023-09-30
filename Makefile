@@ -1,7 +1,7 @@
 NAME	:= cub3d
 
-LIBFT_DIR = ./libraries/libft/
-LIBFT := $(LIBFT_DIR)/libft.a
+LIBFT_DIR = #./libraries/libft/
+LIBFT := #$(LIBFT_DIR)/libft.a
 SRC_DIR	:= ./src
 LIBMLX	:= ./libraries/MLX42
 VPATH = src:libft
@@ -11,18 +11,16 @@ OBJ_DIR	:= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 INC		:= -I $(HEADER) -I $(LIBMLX)/include
-# LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
-#Home
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
-
-
+#School Macs#
+#LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+#For Linux#
+LIBS	:= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 O_FLAGS	:= #-DDEBUG=1
 C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
-SRC		:= cub3d.c parse_utils.c\
-			error_msg.c start_map.c ft_free.c\
-			parse_map_utils.c\
+SRC		:= cub3d.c #parse_utils.c\
+			#error_msg.c #start_map.c\
 
 DEP		:= $(OBJ:.o=.d)
 
@@ -39,7 +37,7 @@ libmlx:
 	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJ)
-	make -C $(LIBFT_DIR)
+	#make -C $(LIBFT_DIR)
 	cc $(C_FLAGS) $(INC) $(OBJ) $(LIBS) $(GNL) $(GNL_UTILS) $(LIBFT) $(O_FLAGS) -o $(NAME) 
 
 $(OBJ_DIR)/%.o: %.c
@@ -54,7 +52,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	#make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
