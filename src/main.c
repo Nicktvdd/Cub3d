@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/30 19:17:18 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:25:05 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	init_data(t_data *data)
 {
- 	data->map = NULL;
- 	data->texture = NULL;
- 	data->color = NULL;
+	data->map = NULL;
+	data->texture = NULL;
+	data->color = NULL;
 }
 
 int	main(int argc, char **argv)

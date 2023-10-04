@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/30 18:46:05 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:25:53 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	print_info(char **data)
 	int	i;
 
 	i = 0;
-	while (data[i])
+	while (data[i] != NULL)
 	{
-		ft_putendl_fd(data[i], 2);
+		ft_putendl_fd(data[i],2);
 		i++;
 	}
 }
@@ -29,7 +29,7 @@ void	print_info(char **data)
 int	data_texture_color(char *line, t_data *data, int *i)
 {
 	char	**info;
-
+	
 	info = ft_split(line, ' ');
 	if (!info[0])
 		return (0);
@@ -56,7 +56,6 @@ int	parse_map_info(t_data *data, int fd)
 	char	*line;
 	int		counter;
 
-	line = NULL;
 	counter = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -66,6 +65,8 @@ int	parse_map_info(t_data *data, int fd)
 			if (counter == 6)
 			{
 				free(line);
+				data->texture[4] = NULL;
+				data->color[2] = NULL;
 				return (1);
 			}
 		}
@@ -85,7 +86,7 @@ char	**parse_map(int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if(is_map(line))
+		if (is_map(line))
 			get_map_line(line, &full_map);
 		free(line);
 		line = get_next_line(fd);
@@ -115,6 +116,6 @@ void	init_map(t_data *data, char **argv)
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
 	data->map = parse_map(fd);
-	print_info(data->map);
+	// print_info(data->texture);
 	close(fd);
 }

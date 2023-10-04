@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/30 18:35:37 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:12:13 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,29 @@ int	check_file(char **argument)
 
 int	is_data(char *line, char **info, t_data **data)
 {
-	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
-		(*data)->texture[0] = ft_strdup(line);
-	else if (ft_strnstr(info[0], "SO", ft_strlen(info[0])))
-		(*data)->texture[1] = ft_strdup(line);
-	else if (ft_strnstr(info[0], "WE", ft_strlen(info[0])))
-		(*data)->texture[2] = ft_strdup(line);
-	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
-		(*data)->texture[3] = ft_strdup(line);
-	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
-		(*data)->color[0] = ft_strdup(line);
-	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
-		(*data)->color[1] = ft_strdup(line);
-	else
+	char	**new_line;
+
+	new_line = ft_split(line, '\n');
+	if (!new_line[0])
 		return (0);
+	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
+		(*data)->texture[0] = ft_strdup(new_line[0]);
+	else if (ft_strnstr(info[0], "SO", ft_strlen(info[0])))
+		(*data)->texture[1] = ft_strdup(new_line[0]);
+	else if (ft_strnstr(info[0], "WE", ft_strlen(info[0])))
+		(*data)->texture[2] = ft_strdup(new_line[0]);
+	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
+		(*data)->texture[3] = ft_strdup(new_line[0]);
+	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
+		(*data)->color[0] = ft_strdup(new_line[0]);
+	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
+		(*data)->color[1] = ft_strdup(new_line[0]);
+	else
+	{
+		free_argt(new_line);
+		return (0);
+	}
+	free_argt(new_line);
 	return (1);
 }
 
