@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/30 19:14:15 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:03:46 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_argt_exit(char **argument);
 void		init_map(t_data *game, char **argv);
 int			is_map(char *line);
 void		get_map_line(char *line, char **temp);
+void			check_map(char **map);
 
 /*Parse utils*/
 
@@ -51,6 +52,7 @@ int			check_file(char **argument);
 int			is_data(char *line, char **info, t_data **data);
 int			is_empty(char *line);
 int			check_delimiter(char c, char *delimiter);
+int			check_firt_rc(char **map);
 
 /*Error tools*/
 void		error_msg(char *msg);
