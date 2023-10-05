@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/09/28 15:13:26 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:49:29 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,14 +139,14 @@ int32_t main(int32_t argc, const char* argv[])
 	mlx_t* mlx;
 
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true))) //create the window
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true))) // create the window
 		error_exit(mlx);
-	if (!(backgr = mlx_new_image(mlx, WIDTH, HEIGHT))) //player size is here
+	if (!(backgr = mlx_new_image(mlx, WIDTH, HEIGHT))) // background size is here
 		error_exit(mlx);
 	draw_map2D(mlx); // - drawing map
-	if (mlx_image_to_window(mlx, backgr, (0), (0)) == -1) // player position here
+	if (mlx_image_to_window(mlx, backgr, (0), (0)) == -1) // background position here
 		error_exit(mlx);
-	if (!(image = mlx_new_image(mlx, PLAYERSIZE, PLAYERSIZE))) //player size is here
+	if (!(image = mlx_new_image(mlx, PLAYERSIZE, PLAYERSIZE))) //p layer size is here
 		error_exit(mlx);
 	draw_player(mlx); // - drawing player
 	if (mlx_image_to_window(mlx, image, (WIDTH / 2 - (PLAYERSIZE / 2) /* half of player */), (HEIGHT / 2 - (PLAYERSIZE / 2))) == -1) // player position here
