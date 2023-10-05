@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/04 18:03:46 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:21:08 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ int			check_file(char **argument);
 int			is_data(char *line, char **info, t_data **data);
 int			is_empty(char *line);
 int			check_delimiter(char c, char *delimiter);
-int			check_firt_rc(char **map);
+int			check_firts_rc(char **map);
+int			check_last_col(char **map);
+int			check_last_row(char **map);
+
 
 /*Error tools*/
 void		error_msg(char *msg);

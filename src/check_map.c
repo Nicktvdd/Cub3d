@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/04 18:03:53 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:21:36 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	check_walls(char **map)
 		return (0);
 	if (!check_last_col(map))
 		return (0);
+	return(1);
 }
 
 int	check_wrong_input(char **map)

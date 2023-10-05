@@ -6,13 +6,13 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:29:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/04 17:57:29 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:29:17 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_firt_rc(char **map)
+int	check_firts_rc(char **map)
 {
 	int	i;
 
