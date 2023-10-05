@@ -6,15 +6,11 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/05 14:26:35 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:49:04 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <MLX42/MLX42.h>
 
 #define PLAYERSIZE 5
 #define MINIMAPSIZE HEIGHT / 3
@@ -41,7 +37,12 @@ int map[8][8] = {
 
 // -----------------------------------------------------------------------------
 
-void draw_map2D(uint32_t sizeY, uint32_t sizeX)
+void	draw_line()
+{
+	int	dx = 
+}
+
+void	draw_map2D(uint32_t sizeY, uint32_t sizeX)
 {
 	uint32_t wall_color = ft_pixel(255, 255, 255, 255);
    	uint32_t empty_color = ft_pixel(0, 0, 0, 255);
@@ -74,7 +75,7 @@ void draw_map2D(uint32_t sizeY, uint32_t sizeX)
     }
 }
 
-void draw_player(void* param)
+void	draw_player(void* param)
 {
 	uint32_t x;
 	uint32_t y;
@@ -102,7 +103,7 @@ void draw_player(void* param)
 
 // -----------------------------------------------------------------------------
 
-void ft_hook(void* param)
+void	ft_hook(void* param)
 {
 	mlx_t* mlx = param;
 	int move = 2;
@@ -133,7 +134,7 @@ void	error_exit(mlx_t* mlx)
 		puts(mlx_strerror(mlx_errno));
 		exit(EXIT_FAILURE);
 }
-int32_t main(int32_t argc, const char* argv[])
+int32_t	main(int32_t argc, const char* argv[])
 {
 	mlx_t* mlx;
 	
@@ -148,7 +149,7 @@ int32_t main(int32_t argc, const char* argv[])
 	if (!(image = mlx_new_image(mlx, PLAYERSIZE, PLAYERSIZE))) //p layer size is here
 		error_exit(mlx);
 	draw_player(mlx); // - drawing player
-	if (mlx_image_to_window(mlx, image, (MINIMAPSIZE/ 2 - (PLAYERSIZE / 2) /* half of player */), (MINIMAPSIZE / 2 - (PLAYERSIZE / 2))) == -1) // player position here
+	if (mlx_image_to_window(mlx, image, ((MINIMAPSIZE / 2) - (PLAYERSIZE / 2) /* half of player */), (MINIMAPSIZE / 2 - (PLAYERSIZE / 2))) == -1) // player position here
 		error_exit(mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
