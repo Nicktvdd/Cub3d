@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/05 15:49:04 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:40 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,31 @@ int map[8][8] = {
 
 void	draw_line()
 {
-	int	dx = 
+	//uint32_t center = image->height / 2;
+	uint32_t color = ft_pixel(
+				0xFF, // R
+				100, // G
+				0xFF, // B
+				0xFF  // A
+			);
+	int dx = image->width - image->height;
+	int dy = image->height - image->width;
+	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+	
+	int incrementx = dx / steps;
+	int incrementy = dy / steps;
+	
+	int x = image->width;
+	int y = image->height;
+	int i = 0;
+
+	while (i <= steps)
+	{
+		mlx_put_pixel(image, x, y, color);
+		x += incrementx;
+		y += incrementy;
+		i++;
+	}
 }
 
 void	draw_map2D(uint32_t sizeY, uint32_t sizeX)
@@ -98,6 +122,7 @@ void	draw_player(void* param)
 		y = 0;
 		x++;
 	}
+	draw_line();
 	(void)param;
 }
 
