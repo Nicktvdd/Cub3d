@@ -6,11 +6,11 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/05 11:49:29 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:59:25 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -154,6 +154,7 @@ int32_t main(int32_t argc, const char* argv[])
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+	error_msg("fuck\n");
 	(void)argc;
 	(void)argv;
 	return (EXIT_SUCCESS);
