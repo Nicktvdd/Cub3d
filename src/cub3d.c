@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/05 11:59:25 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:26:35 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <stdbool.h>
 #include <MLX42/MLX42.h>
 
-#define PLAYERSIZE 50
+#define PLAYERSIZE 5
+#define MINIMAPSIZE HEIGHT / 3
 
 void	error_exit(mlx_t* mlx);
 static mlx_image_t* image;
@@ -40,14 +41,12 @@ int map[8][8] = {
 
 // -----------------------------------------------------------------------------
 
-void draw_map2D(void* param)
+void draw_map2D(uint32_t sizeY, uint32_t sizeX)
 {
 	uint32_t wall_color = ft_pixel(255, 255, 255, 255);
    	uint32_t empty_color = ft_pixel(0, 0, 0, 255);
 	
     uint32_t i = 0;
-	uint32_t sizeY = HEIGHT / PIXELSIZE;
-	uint32_t sizeX = WIDTH / PIXELSIZE;
     while (i < backgr->height && i < PIXELSIZE)  // Ensure we stay within bounds of map
     {
         uint32_t j = 0;
@@ -73,8 +72,6 @@ void draw_map2D(void* param)
         }
         i++;
     }
-
-    (void)param;
 }
 
 void draw_player(void* param)
@@ -114,8 +111,10 @@ void ft_hook(void* param)
 		mlx_close_window(mlx);
 /* 	if (map[image->instances[0].y / HEIGHT][image->instances[0].x / WIDTH] == 1)
 		move = 0; */
-	if (image->instances[0].y >= HEIGHT - PLAYERSIZE || image->instances[0].x >= WIDTH - PLAYERSIZE || image->instances[0].y <= 0 || image->instances[0].x <= 0)
-		move = 0;
+/* 	if (image->instances[0].y >= HEIGHT + PLAYERSIZE || image->instances[0].x >= WIDTH + PLAYERSIZE || image->instances[0].y <= PLAYERSIZE || image->instances[0].x <= PLAYERSIZE)
+		move = -2;
+	else
+		move = 2; */ //collision not working yet
 	printf("image instance\n y: %i\n x: %i\n", image->instances[0].y, image->instances[0].x);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 		image->instances[0].y -= move;
@@ -137,19 +136,19 @@ void	error_exit(mlx_t* mlx)
 int32_t main(int32_t argc, const char* argv[])
 {
 	mlx_t* mlx;
-
+	
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true))) // create the window
 		error_exit(mlx);
-	if (!(backgr = mlx_new_image(mlx, WIDTH, HEIGHT))) // background size is here
+	if (!(backgr = mlx_new_image(mlx, MINIMAPSIZE, MINIMAPSIZE))) // background size is here
 		error_exit(mlx);
-	draw_map2D(mlx); // - drawing map
+	draw_map2D(MINIMAPSIZE / PIXELSIZE, MINIMAPSIZE / PIXELSIZE); // - drawing map
 	if (mlx_image_to_window(mlx, backgr, (0), (0)) == -1) // background position here
 		error_exit(mlx);
 	if (!(image = mlx_new_image(mlx, PLAYERSIZE, PLAYERSIZE))) //p layer size is here
 		error_exit(mlx);
 	draw_player(mlx); // - drawing player
-	if (mlx_image_to_window(mlx, image, (WIDTH / 2 - (PLAYERSIZE / 2) /* half of player */), (HEIGHT / 2 - (PLAYERSIZE / 2))) == -1) // player position here
+	if (mlx_image_to_window(mlx, image, (MINIMAPSIZE/ 2 - (PLAYERSIZE / 2) /* half of player */), (MINIMAPSIZE / 2 - (PLAYERSIZE / 2))) == -1) // player position here
 		error_exit(mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
