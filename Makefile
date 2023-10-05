@@ -11,7 +11,7 @@ OBJ_DIR	:= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 INC		:= -I $(HEADER) -I $(LIBMLX)/include -I $(LIBFT_DIR)libft.h
-#School Macs#
+#School Macs
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
 #For Linux#
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
