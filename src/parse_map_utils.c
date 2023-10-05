@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/04 16:07:27 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:34:10 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	is_map(char *line)
 		return (0);
 	if (!is_empty_line(line))
 		return (0);
-	while (line[i])
-	{
-		if (!check_delimiter(line[i], SPACES) && !check_delimiter(line[i],
-				MAPCODES))
-			return (0);
-		i++;
-	}
+	// while (line[i])
+	// {
+	// 	if (!check_delimiter(line[i], SPACES) && !check_delimiter(line[i],
+	// 			MAPCODES))
+	// 		return (0);
+	// 	i++;
+	// }
 	return (1);
 }
 
