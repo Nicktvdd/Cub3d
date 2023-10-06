@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:59:45 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 19:32:47 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:11:15 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,12 @@ char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	int		len;
-	int		i;
 
-	if (s == '\0')
+	if (!s)
 		return (0);
-	i = 0;
 	len = ft_numwords(s, c);
 	split = (char **)malloc(sizeof(char *) * (len + 1));
-	if (split == '\0')
+	if (!split)
 		return (0);
 	ft_writesplit(split, s, c, len);
 	return (split);

@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:14:08 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 13:45:08 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:10:23 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*s1;
 	size_t	i;
 
-	if (s == '\0')
+	if (!s)
 		return (0);
 	i = 0;
 	s1 = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);

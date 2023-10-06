@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/05 16:02:40 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:15:16 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,3 +184,16 @@ int32_t	main(int32_t argc, const char* argv[])
 	(void)argv;
 	return (EXIT_SUCCESS);
 }
+/* 
+int	main(int argc, char **argv)
+{
+	t_data data;
+
+	if (argc > 2)
+		error_msg("Error, number of arguments invalid");
+	if (argc == 1)
+		error_msg("Error, we need a map");
+	init_data(&data);
+	init_map(&data, argv);
+	return (0);
+} */

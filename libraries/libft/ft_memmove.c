@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:37:27 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 13:40:53 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:13:51 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = 0;
 	array_dst = (unsigned char *)dst;
 	array_src = (unsigned char *)src;
-	if (dst == '\0' && src == '\0')
+	if (!dst && !src)
 		return (0);
 	if (dst > src)
 	{

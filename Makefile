@@ -10,16 +10,20 @@ HEADER := inc
 OBJ_DIR	:= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-INC		:= -I $(HEADER) -I $(LIBMLX)/include -I $(LIBFT_DIR)libft.h
-#School Macs
+INC		:= -I $(HEADER) -I $(LIBMLX)/include
+#School Macs#
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
 #For Linux#
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+#MacHome
+#LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
 
 O_FLAGS	:= #-DDEBUG=1
-C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
-SRC		:= cub3d.c error_msg.c #parse_utils.c #start_map.c\
+SRC		:=  main.c parse_map_utils.c parse_utils.c\
+			error_msg.c ft_free.c start_map.c check_map.c \
+			check_map_utils.c #cub3d.c\
 
 DEP		:= $(OBJ:.o=.d)
 
@@ -54,5 +58,8 @@ fclean: clean
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
+
+test: all
+	./cub3d maps/map.cub
 
 .PHONY: all, clean, fclean, re, libmlx

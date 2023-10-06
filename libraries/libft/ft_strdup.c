@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:35:26 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 13:56:53 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:13:17 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strdup(const char *src)
 	}
 	dest = malloc(sizeof(char) * (len + 1));
 	i = 0;
-	if (dest == '\0')
+	if (!dest)
 	{
 		return (0);
 	}

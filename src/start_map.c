@@ -6,56 +6,116 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/05 11:58:23 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:15:24 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	data_texture(char *line, char **texture)
+/*We have to delete this after test*/
+
+void	print_info(char **data)
+{
+	int	i;
+
+	i = 0;
+	while (data[i] != NULL)
+	{
+		ft_putendl_fd(data[i],2);
+		i++;
+	}
+}
+
+int	data_texture_color(char *line, t_data *data, int *i)
 {
 	char	**info;
-
-	info = ft_split(line, " ");
+	
+	info = ft_split(line, ' ');
 	if (!info[0])
 		return (0);
+	if (is_data(line, info, &data))
+	{
+		free_argt(info);
+		(*i)++;
+		return (1);
+	}
+	else if (is_empty(line))
+	{
+		free_argt(info);
+		return (1);
+	}
+	else
+	{
+		free_argt(info);
+		return (0);
+	}
 }
 
-static int	parse_map_info(t_data *data, int fd)
+int	parse_map_info(t_data *data, int fd)
 {
 	char	*line;
+	int		counter;
 
-	data->texture = (char **)malloc(sizeof(char *) * 5);
-	if (!data->texture)
-		return (0);
-	while (42)
+	counter = 0;
+	line = get_next_line(fd);
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (!data_texture(line, data->texture))
+		if (data_texture_color(line, data, &counter))
 		{
-			free(line);
-			return (0);
+			if (counter == 6)
+			{
+				free(line);
+				data->texture[4] = NULL;
+				data->color[2] = NULL;
+				return (1);
+			}
 		}
+		free(line);
+		line = get_next_line(fd);
 	}
-	return (1);
+	return (0);
 }
 
-static int	check_file(char **argument)
+char	**parse_map(int fd)
 {
-	if (!ft_strstr(argument[1], ".cub"))
-		return (0);
-	return (1);
+	char	*line;
+	char	*full_map;
+	char	**final_map;
+
+	full_map = ft_strdup("");
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (is_map(line))
+			get_map_line(line, &full_map);
+		free(line);
+		line = get_next_line(fd);
+	}
+	final_map = ft_split(full_map, '\n');
+	if (!final_map[0] || !final_map)
+		free_argt_exit(final_map);
+	free(full_map);
+	return (final_map);
 }
 
 void	init_map(t_data *data, char **argv)
 {
+	int	fd;
+
 	if (!check_file(argv))
 		error_msg("Error, invalid file format");
-	data->fd = open(argv[1], O_RDONLY);
-	if (data->fd == -1)
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
 		error_msg("Error file descriptor");
-	if (!parse_map_info(data, data->fd))
-		error_msg("wrong map information");
-	// if (!parse_map(data->fd))
-	// 	error_msg("Invalid map");
+	data->texture = (char **)malloc(sizeof(char *) * 5);
+	if (!data->texture)
+		error_msg("Allocation error");
+	data->color = (char **)malloc(sizeof(char *) * 2);
+	if (!data->color)
+		error_msg("Allocation error");
+	if (!parse_map_info(data, fd))
+		error_msg("Wrong map information");
+	data->map = parse_map(fd);
+	// print_info(data->texture);
+	close(fd);
 }

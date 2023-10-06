@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 16:49:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/29 17:10:13 by jpelaez-         ###   ########.fr       */
+/*   Created: 2023/09/26 15:09:39 by jpelaez-          #+#    #+#             */
+/*   Updated: 2023/09/27 13:14:35 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	free_argt(char **argument)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
+	while (argument[i])
 	{
-		f(i, &s[i]);
+		free(argument[i]);
+		argument[i] = NULL;
 		i++;
 	}
+	free(argument);
 }
+
+void	free_argt_exit(char **argument)
+{
+	free_argt(argument);
+	error_msg("Error, empty map");
+}
+

@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:17:22 by jpelaez-          #+#    #+#             */
-/*   Updated: 2022/11/14 14:00:53 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:11:38 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_itoa(int n)
 
 	len = ft_digit_len(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));
-	if (s == '\0')
+	if (!s)
 		return (0);
 	s[len] = '\0';
 	len--;
