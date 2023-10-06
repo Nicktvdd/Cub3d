@@ -59,4 +59,7 @@ fclean: clean
 
 re: fclean all
 
+test: all
+	./cub3d maps/map.cub
+
 .PHONY: all, clean, fclean, re, libmlx
