@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/24 18:16:27 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:52:49 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_data
 	char	**color;
 	char	**map;
 	mlx_t   *mlx;
+	mlx_image_t	*img;
 
 }			t_data;
 
@@ -61,7 +62,7 @@ int			check_last_row(char **map);
 /*Error tools*/
 void		error_msg(char *msg);
 void		print_info(char **data);
-void 		start_game(t_data *data);	
+void 		star_game(t_data *data);	
 
 
 #endif
