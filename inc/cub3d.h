@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/24 17:38:53 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:16:27 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include "../libraries/get_next_line/get_next_line.h"
 # include "../libraries/libft/libft.h"
-# include "MLX42/MLX42.h"
+# include "../libraries/MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
