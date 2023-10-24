@@ -6,14 +6,14 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/05 14:31:57 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:38:53 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIDTH 1024
-# define HEIGHT 512
+# define W 1024
+# define H 512
 
 # include "../libraries/get_next_line/get_next_line.h"
 # include "../libraries/libft/libft.h"
@@ -31,6 +31,7 @@ typedef struct s_data
 	char	**texture;
 	char	**color;
 	char	**map;
+	mlx_t   *mlx;
 
 }			t_data;
 
@@ -59,7 +60,8 @@ int			check_last_row(char **map);
 
 /*Error tools*/
 void		error_msg(char *msg);
-void	print_info(char **data);
+void		print_info(char **data);
+void 		start_game(t_data *data);	
 
 
 #endif
