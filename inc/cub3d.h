@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/24 18:52:49 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:14:29 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <unistd.h>
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
+# define SCREEN_W 800
+# define SCREEN_H 750
 
 typedef struct s_data
 {
@@ -40,6 +42,7 @@ typedef struct s_data
 
 void		free_argt(char **argument);
 void	free_argt_exit(char **argument);
+void	free_all(t_data *data);
 
 /*Map tools*/
 void		init_map(t_data *game, char **argv);
