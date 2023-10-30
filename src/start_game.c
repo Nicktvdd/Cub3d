@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:00:11 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:58:11 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+//TODO: Everything into this file
 void	keys(mlx_key_data_t keydata, t_data *data)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
@@ -34,7 +34,7 @@ void set_image(t_data *data)
 	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
 	if (!data->img || (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
 		error_msg("Error");
-	draw_floor(data);
+	//draw_floor(data);
 }
 
 void	star_game(t_data *data)

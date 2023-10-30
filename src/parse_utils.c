@@ -6,12 +6,12 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:06:07 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:58:34 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+//TODO: check map pre-data
 int	ft_strstr(char *big, char *little)
 {
 	size_t	j;

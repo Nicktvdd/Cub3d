@@ -6,14 +6,14 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/30 14:05:59 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:05:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
+//TODO: make this work with the map
 #define PLAYERSIZE 5
-#define MINIMAPSIZE HEIGHT / 3
+#define MINIMAPSIZE (HEIGHT / 3)
 
 void	error_exit(mlx_t* mlx);
 static mlx_image_t* image;
@@ -37,7 +37,7 @@ int map[8][8] = {
 
 // -----------------------------------------------------------------------------
 
-void	draw_line()
+/* void	draw_line()
 {
 	//uint32_t center = image->height / 2;
 	uint32_t color = ft_pixel(
@@ -64,7 +64,7 @@ void	draw_line()
 		y += incrementy;
 		i++;
 	}
-}
+} */
 
 void	draw_map2D(uint32_t sizeY, uint32_t sizeX)
 {
@@ -122,7 +122,7 @@ void	draw_player(void* param)
 		y = 0;
 		x++;
 	}
-	draw_line();
+	//draw_line();
 	(void)param;
 }
 
