@@ -1,11 +1,11 @@
 NAME	:= cub3d
 
 LIBFT_DIR = ./libraries/libft/
-LIBFT := $(LIBFT_DIR)libft.a
+LIBFT := $(LIBFT_DIR)/libft.a
 SRC_DIR	:= ./src
 LIBMLX	:= ./libraries/MLX42
 VPATH = src:libft
-HEADER := inc
+HEADER := ./inc
 
 OBJ_DIR	:= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
@@ -21,7 +21,9 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/
 O_FLAGS	:= #]-DDEBUG=1
 C_FLAGS	:= -Wextra -Wall -Wunreachable-code  -Ofast -g -fsanitize=address # -Ofast  -Werror
 
-SRC		:=  error_msg.c cub3d.c\
+SRC		:=  main.c parse_map_utils.c parse_utils.c\
+			error_msg.c ft_free.c start_map.c check_map.c \
+			check_map_utils.c start_game.c draw.c #cub3d.c\
 
 DEP		:= $(OBJ:.o=.d)
 
@@ -53,7 +55,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	#make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
