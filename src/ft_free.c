@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:09:39 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/09/27 13:14:35 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:08:56 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,9 @@ void	free_argt_exit(char **argument)
 	error_msg("Error, empty map");
 }
 
+void	free_all(t_data *data)
+{
+	free_argt(data->map);
+	free_argt(data->color);
+	free_argt(data->texture);
+}

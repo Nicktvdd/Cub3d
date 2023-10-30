@@ -6,19 +6,22 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:02 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:04:50 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define WIDTH 1024
+# define W 1024
 # define HEIGHT 512
+# define H 512
 # define PIXELSIZE 8
+
 
 # include "../libraries/get_next_line/get_next_line.h"
 # include "../libraries/libft/libft.h"
-# include "MLX42/MLX42.h"
+# include "../libraries/MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,6 +31,8 @@
 # include <math.h>
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
+# define SCREEN_W 800
+# define SCREEN_H 750
 
 typedef struct s_data
 {
@@ -35,6 +40,8 @@ typedef struct s_data
 	char	**texture;
 	char	**color;
 	char	**map;
+	mlx_t   *mlx;
+	mlx_image_t	*img;
 
 }			t_data;
 
@@ -42,6 +49,7 @@ typedef struct s_data
 
 void		free_argt(char **argument);
 void	free_argt_exit(char **argument);
+void	free_all(t_data *data);
 
 /*Map tools*/
 void		init_map(t_data *game, char **argv);
@@ -63,7 +71,8 @@ int			check_last_row(char **map);
 
 /*Error tools*/
 void		error_msg(char *msg);
-void	print_info(char **data);
+void		print_info(char **data);
+void 		star_game(t_data *data);	
 
 
 #endif

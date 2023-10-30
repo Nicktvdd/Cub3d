@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/06 10:15:24 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:06:09 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	init_map(t_data *data, char **argv)
 	data->texture = (char **)malloc(sizeof(char *) * 5);
 	if (!data->texture)
 		error_msg("Allocation error");
-	data->color = (char **)malloc(sizeof(char *) * 2);
+	data->color = (char **)malloc(sizeof(char *) * 3);
 	if (!data->color)
 		error_msg("Allocation error");
 	if (!parse_map_info(data, fd))
