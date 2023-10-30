@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:27:53 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:49:09 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,22 @@ void	start_mlx(t_data *data)
 
 void set_image(t_data *data)
 {
-	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
+	if (!(data->img = mlx_new_image(data->mlx, PLAYERSIZE, PLAYERSIZE))) //p layer size is here
+		error_exit(data->mlx);
+	draw_player(data); // - drawing player
+	if (mlx_image_to_window(data->mlx, data->img, ((MINIMAPSIZE / 2) - (PLAYERSIZE / 2) /* half of player */), (MINIMAPSIZE / 2 - (PLAYERSIZE / 2))) == -1) // player position here
+		error_exit(data->mlx);
+	
+/* 	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
 	if (!data->img || (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
-		error_msg("Error");
+		error_msg("Error"); */
 	//draw_floor(data);
 }
 
 void	start_game(t_data *data)
 {
 	start_mlx(data);
-	set_image(data);
+	//set_image(data);
 	mlx_key_hook(data->mlx, &keys, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);

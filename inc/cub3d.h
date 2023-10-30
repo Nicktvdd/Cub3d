@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:27:37 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:49:50 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define HEIGHT 512
 # define H 512
 # define PIXELSIZE 8
-# define PLAYERSIZE 5
+# define PLAYERSIZE 20
 # define MINIMAPSIZE (HEIGHT / 3)
 
 
@@ -44,6 +44,7 @@ typedef struct s_data
 	char	**map;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
+	mlx_image_t	*backgr;
 
 }			t_data;
 
@@ -78,7 +79,7 @@ void	error_exit(mlx_t* mlx);
 
 /* Drawing */
 void	draw_map2D(uint32_t sizeY, uint32_t sizeX);
-void	draw_player(void* param);
+void	draw_player(t_data *data);
 
 /* Hooks */
 void	ft_hook(void* param);
