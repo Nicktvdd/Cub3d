@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:04:50 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:29:46 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include <math.h>
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
+# define PLAYER_P "NSEW"
 # define SCREEN_W 800
 # define SCREEN_H 750
 
@@ -40,6 +41,10 @@ typedef struct s_data
 	char	**texture;
 	char	**color;
 	char	**map;
+	int		p_x;
+	int		p_y;
+	int floor_c;
+	int ceiling_c;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 
@@ -74,5 +79,7 @@ void		error_msg(char *msg);
 void		print_info(char **data);
 void 		star_game(t_data *data);	
 
+/*Draw stuff*/
 
+void	draw_floor(t_data *data);
 #endif

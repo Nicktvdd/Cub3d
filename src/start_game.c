@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:58:11 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:26:16 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void set_image(t_data *data)
 	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
 	if (!data->img || (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
 		error_msg("Error");
-	//draw_floor(data);
+	draw_floor(data);
 }
 
 void	star_game(t_data *data)
