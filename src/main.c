@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/24 18:52:41 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:27:37 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	if (argc > 2)
 		error_msg("Error, number of arguments invalid");
 	if (argc == 1)
@@ -30,6 +31,6 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	init_map(&data, argv);
 	check_map(data.map);
-	star_game(&data);
+	start_game(&data);
 	return (0);
 }

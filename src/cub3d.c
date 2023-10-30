@@ -6,14 +6,13 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/30 15:05:57 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:25:44 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 //TODO: make this work with the map
-#define PLAYERSIZE 5
-#define MINIMAPSIZE (HEIGHT / 3)
+
 
 void	error_exit(mlx_t* mlx);
 static mlx_image_t* image;

@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:58:11 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:27:53 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	keys(mlx_key_data_t keydata, t_data *data)
 	}
 }
 
-void	star_mlx(t_data *data)
+void	start_mlx(t_data *data)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	data->mlx = mlx_init(W, H, "NICKJUAN", true);
@@ -37,9 +37,9 @@ void set_image(t_data *data)
 	//draw_floor(data);
 }
 
-void	star_game(t_data *data)
+void	start_game(t_data *data)
 {
-	star_mlx(data);
+	start_mlx(data);
 	set_image(data);
 	mlx_key_hook(data->mlx, &keys, data);
 	mlx_loop(data->mlx);
