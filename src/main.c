@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:03:25 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:03:42 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	start_position(t_data *data)
 		}
 		i++;
 	}
+	data->map_height = get_map_height(data->map);
 }
 
 void	init_data(t_data *data)

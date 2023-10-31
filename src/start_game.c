@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 18:26:16 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:40:55 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ void	star_mlx(t_data *data)
 
 void set_image(t_data *data)
 {
-	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
-	if (!data->img || (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
+	if(!(data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H)))
+		error_msg("Error with new image");
+	ft_putendl_fd(ft_itoa(data->map_height),2);
+	draw_floor(data, 0, SCREEN_H / data->map_height);
+	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
 		error_msg("Error");
-	draw_floor(data);
+	// draw_floor(data);
+	// if (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0)
+	// 	error_msg("Error");
 }
 
 void	star_game(t_data *data)

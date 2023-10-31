@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 18:29:46 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:28:19 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
 # define PLAYER_P "NSEW"
-# define SCREEN_W 800
-# define SCREEN_H 750
+# define SCREEN_W 640
+# define SCREEN_H 480
 
 typedef struct s_data
 {
@@ -43,11 +43,12 @@ typedef struct s_data
 	char	**map;
 	int		p_x;
 	int		p_y;
-	int floor_c;
-	int ceiling_c;
+	int 	floor_c;
+	int 	ceiling_c;
+	int		map_height;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
-
+	
 }			t_data;
 
 /*Free Stuff*/
@@ -72,6 +73,7 @@ int			check_delimiter(char c, char *delimiter);
 int			check_first_rc(char **map);
 int			check_last_col(char **map);
 int			check_last_row(char **map);
+int			get_map_height(char **map);
 
 
 /*Error tools*/
@@ -81,5 +83,5 @@ void 		star_game(t_data *data);
 
 /*Draw stuff*/
 
-void	draw_floor(t_data *data);
+void	draw_floor(t_data *data, int x_scale, int y_scale);
 #endif
