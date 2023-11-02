@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:21:50 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:37:15 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,22 @@
 # include <math.h>
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
-# define SCREEN_W 800
-# define SCREEN_H 750
+# define PLAYER_P "NSEW"
+# define SCREEN_W 1024
+# define SCREEN_H 512
+
+
+
+
+typedef struct s_player
+{
+	int 	p_x;
+	int		p_y;
+	int     dir_x;
+	int		dir_y;
+	
+}	t_player;
+
 
 typedef struct s_data
 {
@@ -42,10 +56,17 @@ typedef struct s_data
 	char	**texture;
 	char	**color;
 	char	**map;
+	int		p_x;
+	int		p_y;
+	int 	floor_c;
+	int 	ceiling_c;
+	int		map_height;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	mlx_image_t	*backgr;
 
+	t_player *player;
+	
 }			t_data;
 
 /*Free Stuff*/
@@ -71,6 +92,7 @@ int		check_first_rc(char **map);
 int		check_last_col(char **map);
 int		check_last_row(char **map);
 
+
 /*Error tools*/
 void	error_msg(char *msg);
 void	print_info(char **data);
@@ -83,5 +105,12 @@ void	draw_player(t_data *data);
 
 /* Hooks */
 void	ft_hook(void* param);
+/*Draw stuff*/
 
+void	draw_floor_ceiling(t_data *data);
+void	define_color(t_data *data);
+
+/*Player stuff*/
+int player_position(t_player *player, char **map);
+int	player_orientation(t_player *player, char **map);
 #endif

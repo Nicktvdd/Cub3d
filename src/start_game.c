@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:31:42 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:40:13 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	keys(mlx_key_data_t keydata, t_data *data)
 void	start_mlx(t_data *data)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	data->mlx = mlx_init(W, H, "NICKJUAN", true);
+	data->mlx = mlx_init(SCREEN_W, SCREEN_H, "NICKJUAN", true);
 	if (!data->mlx)
 		error_msg("Error");
 }
 
-void set_image(t_data *data)
+void	set_background(t_data *data)
 {
 /* 	if (!(data->backgr = mlx_new_image(data->mlx, MINIMAPSIZE, MINIMAPSIZE))) // background size is here
 		error_exit(data->mlx);
@@ -47,12 +47,28 @@ void set_image(t_data *data)
 	if (!data->img || (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
 		error_msg("Error"); */
 	//draw_floor(data);
+	if (!(data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H)))
+		error_msg("Error with new image");
+	define_color(data);
+	draw_floor_ceiling(data);
+	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
+		error_msg("Error");
+}
+
+void	set_player(t_data *data)
+{
+	if (!player_position(data->player, data->map))
+		error_msg("Error, no player position");
+	if (!player_orientation(data->player, data->map))
+		error_msg("Erros invalid orientation");
 }
 
 void	start_game(t_data *data)
 {
 	start_mlx(data);
-	set_image(data);
+	set_background(data); // have to set also the textures
+	set_player(data);
+	ray_casting(data);
 	mlx_key_hook(data->mlx, &keys, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);

@@ -6,11 +6,35 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:27:37 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:38:38 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	start_position(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map[i] != NULL)
+	{
+		j = 0;
+		while (data->map[i][j] != '\0')
+		{
+			if (!check_delimiter(data->map[i][j], PLAYER_P))
+			{
+				data->p_x = i;
+				data->p_y = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	data->map_height = get_map_height(data->map);
+}
 
 void	init_data(t_data *data)
 {
@@ -31,6 +55,8 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	init_map(&data, argv);
 	check_map(data.map);
+	start_game(&data);
+	start_position(&data);
 	start_game(&data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/30 15:25:44 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:37:22 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	draw_map2D(uint32_t sizeY, uint32_t sizeX)
     while (i < backgr->height && i < PIXELSIZE)  // Ensure we stay within bounds of map
     {
         uint32_t j = 0;
-        uint32_t y = i * sizeY;
+        uint32_t y = i * sizeY; 
         while (j < backgr->width && j < PIXELSIZE)  // Ensure we stay within bounds of map
         {
 			uint32_t x = j * sizeX;
 			uint32_t draw_y = y;
 			while (draw_y < y + sizeY && draw_y < backgr->height)
 			{
-				uint32_t draw_x = x;
+				uint32_t draw_x = x; 
 				while (draw_x < x + sizeX && draw_x < backgr->width)
 				{
 					if (map[i][j] == 1)
