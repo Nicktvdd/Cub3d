@@ -6,13 +6,17 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:22:42 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:10:31 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void ray_position_direction(int x)
+void	ray_position_direction(t_data *data, int x)
 {
-    
+	data->camera_x = 2 * x / (double)SCREEN_W - 1;
+	data->raydir_x = data->player->dir_x + data->player->plane_x
+		* data->camera_x;
+	data->raydir_y = data->player->dir_y + data->player->plane_y
+		* data->camera_x;
 }

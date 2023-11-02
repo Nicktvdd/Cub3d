@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:23:25 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:08:28 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@
 
 typedef struct s_player
 {
-	int 	p_x;
-	int		p_y;
-	int     dir_x;
-	int		dir_y;
-	
+	double	p_x;
+	double	p_y;
+	double     dir_x;
+	double		dir_y;
+	double 	plane_x;
+	double 	plane_y;
 }	t_player;
 
 
@@ -52,6 +53,8 @@ typedef struct s_data
 	int 	ceiling_c;
 	int		map_height;
 	double 	camera_x;
+	double	raydir_x;
+	double raydir_y;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	t_player *player;
@@ -98,5 +101,5 @@ int player_position(t_player *player, char **map);
 int	player_orientation(t_player *player, char **map);
 
 /*RayCasting*/
-void ray_position_direction(int x);
+void ray_position_direction(t_data *data, int x);
 #endif

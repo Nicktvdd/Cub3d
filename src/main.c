@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/31 14:03:42 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:31:43 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	start_position(t_data *data)
 		{
 			if (!check_delimiter(data->map[i][j], PLAYER_P))
 			{
-				data->p_x = i;
-				data->p_y = j;
 				break ;
 			}
 			j++;

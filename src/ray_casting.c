@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:12:28 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:33:35 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	ray_casting(t_data *data)
 
 	x = 0;
 	while (x < SCREEN_W)
-	{   
-        ray_position_direction(data);
-        
+	{
+		ray_position_direction(data, x);
 	}
 }
