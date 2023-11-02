@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 16:40:32 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:42:35 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	ray_box_position_direction(t_data *data, int x)
 		* data->camera_x;
 	data->raydir_y = data->player->dir_y + data->player->plane_y
 		* data->camera_x;
-	data->map_x = int(data->player->p_x);
-	data->map_y = int(data->player->p_y);
+	data->map_x = (int)data->player->p_x;
+	data->map_y = (int)data->player->p_y;
 }
