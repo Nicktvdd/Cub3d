@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:09:58 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:23:25 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ typedef struct s_data
 	char	**texture;
 	char	**color;
 	char	**map;
-	int		p_x;
-	int		p_y;
 	int 	floor_c;
 	int 	ceiling_c;
 	int		map_height;
+	double 	camera_x;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	t_player *player;
@@ -97,4 +96,7 @@ void	define_color(t_data *data);
 /*Player stuff*/
 int player_position(t_player *player, char **map);
 int	player_orientation(t_player *player, char **map);
+
+/*RayCasting*/
+void ray_position_direction(int x);
 #endif
