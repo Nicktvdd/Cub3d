@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:38:38 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:55:37 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	start_position(t_data *data)
 		{
 			if (!check_delimiter(data->map[i][j], PLAYER_P))
 			{
-				data->p_x = i;
-				data->p_y = j;
 				break ;
 			}
 			j++;

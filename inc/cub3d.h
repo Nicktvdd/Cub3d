@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:37:15 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:55:20 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ typedef struct s_data
 	char	**texture;
 	char	**color;
 	char	**map;
-	int		p_x;
-	int		p_y;
 	int 	floor_c;
 	int 	ceiling_c;
 	int		map_height;
@@ -80,6 +78,7 @@ void	init_map(t_data *game, char **argv);
 int		is_map(char *line);
 void	get_map_line(char *line, char **temp);
 void	check_map(char **map);
+int		get_map_height(char **map);
 
 /*Parse utils*/
 
@@ -91,7 +90,6 @@ int		check_delimiter(char c, char *delimiter);
 int		check_first_rc(char **map);
 int		check_last_col(char **map);
 int		check_last_row(char **map);
-
 
 /*Error tools*/
 void	error_msg(char *msg);
@@ -105,12 +103,14 @@ void	draw_player(t_data *data);
 
 /* Hooks */
 void	ft_hook(void* param);
-/*Draw stuff*/
 
+/*Draw stuff*/
 void	draw_floor_ceiling(t_data *data);
 void	define_color(t_data *data);
 
 /*Player stuff*/
-int player_position(t_player *player, char **map);
-int	player_orientation(t_player *player, char **map);
+int 	player_position(t_player *player, char **map);
+int		player_orientation(t_player *player, char **map);
+
+void	minimap(t_data *data);
 #endif
