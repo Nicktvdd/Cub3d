@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:49:09 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:31:42 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	start_mlx(t_data *data)
 
 void set_image(t_data *data)
 {
+/* 	if (!(data->backgr = mlx_new_image(data->mlx, MINIMAPSIZE, MINIMAPSIZE))) // background size is here
+		error_exit(data->mlx);
+	draw_map2D(MINIMAPSIZE / PIXELSIZE, MINIMAPSIZE / PIXELSIZE); // - drawing map
+	if (mlx_image_to_window(data->mlx, data->backgr, (0), (0)) == -1) // background position here
+		error_exit(data->mlx); */
+		//------------------
 	if (!(data->img = mlx_new_image(data->mlx, PLAYERSIZE, PLAYERSIZE))) //p layer size is here
 		error_exit(data->mlx);
 	draw_player(data); // - drawing player
@@ -46,7 +52,7 @@ void set_image(t_data *data)
 void	start_game(t_data *data)
 {
 	start_mlx(data);
-	//set_image(data);
+	set_image(data);
 	mlx_key_hook(data->mlx, &keys, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
