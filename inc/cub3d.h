@@ -6,18 +6,12 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/31 18:28:19 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:09:58 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define WIDTH 1024
-# define W 1024
-# define HEIGHT 512
-# define H 512
-# define PIXELSIZE 8
-
 
 # include "../libraries/get_next_line/get_next_line.h"
 # include "../libraries/libft/libft.h"
@@ -32,8 +26,21 @@
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
 # define PLAYER_P "NSEW"
-# define SCREEN_W 640
-# define SCREEN_H 480
+# define SCREEN_W 1024
+# define SCREEN_H 512
+
+
+
+
+typedef struct s_player
+{
+	int 	p_x;
+	int		p_y;
+	int     dir_x;
+	int		dir_y;
+	
+}	t_player;
+
 
 typedef struct s_data
 {
@@ -48,6 +55,7 @@ typedef struct s_data
 	int		map_height;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
+	t_player *player;
 	
 }			t_data;
 
@@ -83,5 +91,10 @@ void 		star_game(t_data *data);
 
 /*Draw stuff*/
 
-void	draw_floor(t_data *data, int x_scale, int y_scale);
+void	draw_floor_ceiling(t_data *data);
+void	define_color(t_data *data);
+
+/*Player stuff*/
+int player_position(t_player *player, char **map);
+int	player_orientation(t_player *player, char **map);
 #endif

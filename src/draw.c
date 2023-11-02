@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:00:35 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/31 18:46:06 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:18:19 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,23 @@ void	define_color(t_data *data)
 	data->ceiling_c = get_rgb(100, 0, 225);
 }
 
-void	draw_floor(t_data *data, int x_scale, int y_scale)
+void	draw_floor_ceiling(t_data *data)
 {
-	int	i;
-	int	j;
-	int	dx;
-	int	dy;
+	int	x;
+	int	y;
 
-	i = 0;
-	define_color(data);
-	while (data->map[i] != NULL)
+	y = 0;
+	while (y < SCREEN_H)
 	{
-		j = 0;
-		x_scale = SCREEN_W / ft_strlen(data->map[i]);
-		while (data->map[i][j] != '\0')
+		x = 0;
+		while (x < SCREEN_W)
 		{
-			dy = 0;
-			while (dy < y_scale)
-			{
-				dx = 0;
-				while (dx < x_scale)
-				{
-					if (data->map[i][j] == '1')
-						mlx_put_pixel(data->img, j * x_scale + dx, i * y_scale
-								+ dy, data->floor_c);
-					else
-						mlx_put_pixel(data->img, j * x_scale + dx, i * y_scale
-								+ dy, data->ceiling_c);
-					dx++;
-				}
-				dy++;
-			}
-			j++;
+			if (y < SCREEN_H / 2)
+				mlx_put_pixel(data->img, x, y, data->ceiling_c);
+			else
+				mlx_put_pixel(data->img, x, y, data->floor_c);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
