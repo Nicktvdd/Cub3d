@@ -6,37 +6,36 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:48:07 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/11/02 14:52:03 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:21:05 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
     return (r << 24 | g << 16 | b << 8 | a);
 }
 
-/* void	draw_map2D(t_data *data, uint32_t sizeY, uint32_t sizeX)
+void	draw_map2D(t_data *data)
 {
 	uint32_t wall_color = ft_pixel(255, 255, 255, 255);
    	uint32_t empty_color = ft_pixel(0, 0, 0, 255);
+	uint32_t size = MINIMAPSIZE / PIXELSIZE;
 	
     uint32_t i = 0;
     while (i < data->backgr->height && i < PIXELSIZE)  // Ensure we stay within bounds of map
     {
         uint32_t j = 0;
-        uint32_t y = i * sizeY;
+        uint32_t y = i * size;
         while (j < data->backgr->width && j < PIXELSIZE)  // Ensure we stay within bounds of map
         {
-			uint32_t x = j * sizeX;
+			uint32_t x = j * size;
 			uint32_t draw_y = y;
-			while (draw_y < y + sizeY && draw_y < data->backgr->height)
+			while (draw_y < y + size && draw_y < data->backgr->height)
 			{
 				uint32_t draw_x = x;
-				while (draw_x < x + sizeX && draw_x < data->backgr->width)
+				while (draw_x < x + size && draw_x < data->backgr->width)
 				{
 					if (data->map[i][j] == '1')
 						mlx_put_pixel(data->backgr, draw_x, draw_y, wall_color);
@@ -50,7 +49,7 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
         }
         i++;
     }
-} */
+}
 
 void	draw_player(t_data *data)
 {
@@ -79,11 +78,11 @@ void	draw_player(t_data *data)
 
 void	minimap(t_data *data)
 {
-/* 	if (!(data->backgr = mlx_new_image(data->mlx, MINIMAPSIZE, MINIMAPSIZE))) // background size is here
+	if (!(data->backgr = mlx_new_image(data->mlx, MINIMAPSIZE, MINIMAPSIZE))) // background size is here
 		error_exit(data->mlx);
-	draw_map2D(MINIMAPSIZE / PIXELSIZE, MINIMAPSIZE / PIXELSIZE); // - drawing map
+	draw_map2D(data); // - drawing map
 	if (mlx_image_to_window(data->mlx, data->backgr, (0), (0)) == -1) // background position here
-		error_exit(data->mlx); */
+		error_exit(data->mlx);
 		//------------------
 	if (!(data->img = mlx_new_image(data->mlx, PLAYERSIZE, PLAYERSIZE))) //p layer size is here
 		error_exit(data->mlx);

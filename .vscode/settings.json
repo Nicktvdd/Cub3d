@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"cub3d.h": "c",
-		"mlx42.h": "c"
+		"mlx42.h": "c",
+		"__tree": "c",
+		"map": "c"
 	}
 }

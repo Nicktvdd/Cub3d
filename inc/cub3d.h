@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:55:20 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:06:12 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void 	start_game(t_data *data);
 void	error_exit(mlx_t* mlx);
 
 /* Drawing */
-void	draw_map2D(t_data *data, uint32_t sizeY, uint32_t sizeX);
+void	draw_map2D(t_data *data);
 void	draw_player(t_data *data);
 
 /* Hooks */
