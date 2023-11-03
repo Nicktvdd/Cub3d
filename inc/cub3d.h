@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 16:38:38 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:05:21 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define PLAYER_P "NSEW"
 # define SCREEN_W 1024
 # define SCREEN_H 512
+# define TRUE 1
+# define FALSE 0
 
 
 
@@ -57,6 +59,14 @@ typedef struct s_data
 	double raydir_y;
 	int 	map_x;
 	int		map_y;
+	double delta_dist_x;
+	double delta_dist_y;
+	int		step_x;
+	int 	step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	perp_dist;
+	int		side;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	t_player *player;
@@ -99,10 +109,11 @@ void	draw_floor_ceiling(t_data *data);
 void	define_color(t_data *data);
 
 /*Player stuff*/
-int player_position(t_player *player, char **map);
-int	player_orientation(t_player *player, char **map);
+int 	player_position(t_player *player, char **map);
+int		player_orientation(t_player *player, char **map);
 
 /*RayCasting*/
-void	ray_box_position_direction(t_data *data, int x);
-
+void	ray_calculations(t_data *data, int x);
+void 	dda_algorithm(t_data *data);
+void	high_of_wall(t_data *data);
 #endif

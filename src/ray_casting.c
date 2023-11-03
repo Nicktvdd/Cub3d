@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 16:41:07 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:54:43 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ray_casting(t_data *data)
 	x = 0;
 	while (x < SCREEN_W)
 	{
-		ray_box_position_direction(data, x);
-		box_position(data);
+		ray_calculations(data, x);
+		dda_algorithm(data);
+		high_of_wall(data);
 	}
 }
