@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_calculations.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/03 18:05:11 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:32:20 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,17 @@ void	dda_algorithm(t_data *data)
 	}
 }
 
-void	high_of_wall(t_data *data)
+void	wall_calculations(t_data *data)
 {
 	if (data->side == 0)
 		data->perp_dist = data->side_dist_x - data->delta_dist_x;
 	else
 		data->perp_dist = data->side_dist_y - data->delta_dist_y;
+	data->line_height = (int)(SCREEN_H / data->perp_dist);
+	data->draw_star = SCREEN_H / 2 - data->line_height / 2;
+	if(data->draw_star < 0)
+		data->draw_star = 0;
+	data->draw_end = SCREEN_H / 2 + data->line_height / 2;
+	if(data->draw_end >= SCREEN_H )
+		data->draw_end = SCREEN_H - 1;
 }

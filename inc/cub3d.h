@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/03 18:05:21 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:28:31 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct s_data
 	double	side_dist_y;
 	double	perp_dist;
 	int		side;
+	int 	line_height;
+	int		draw_star;
+	int		draw_end;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	t_player *player;
@@ -115,5 +118,5 @@ int		player_orientation(t_player *player, char **map);
 /*RayCasting*/
 void	ray_calculations(t_data *data, int x);
 void 	dda_algorithm(t_data *data);
-void	high_of_wall(t_data *data);
+void	wall_calculations(t_data *data);
 #endif
