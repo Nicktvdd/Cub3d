@@ -6,15 +6,28 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:13:27 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:56:38 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	draw_stuff(int x, t_ray *ray, t_data *data)
+{
+	int	y;
+
+	y = ray->draw_star;
+	while (y < ray->draw_end)
+	{
+		mlx_put_pixel(data->img, x, y, data->wall_c);
+		ft_putendl_fd("puta",2);
+		y++;
+	}
+}
+
 void	ray_casting(t_data *data)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	data->ray = malloc(sizeof(t_ray));
@@ -25,10 +38,10 @@ void	ray_casting(t_data *data)
 		ray_calculations(data, data->ray, x);
 		dda_algorithm(data, data->ray);
 		wall_calculations(data->ray);
+		draw_stuff(x, data->ray, data);
 		x++;
 	}
-	mlx_put_pixel(data->img, data->ray->draw_star, data->ray->draw_end,
-			data->wall_c);
+	ft_putendl_fd("HOLA",2);
 	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
-		error_msg("Error");
+		error_msg("Error");	
 }

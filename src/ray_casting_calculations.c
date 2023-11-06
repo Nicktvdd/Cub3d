@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 14:22:45 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:04:18 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,12 @@ void	wall_calculations(t_ray *ray)
 		ray->perp_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
 		ray->perp_dist = ray->side_dist_y - ray->delta_dist_y;
-	ray->line_height = (int)(SCREEN_H / ray->perp_dist);
+	printf("%3lf\n", ray->perp_dist);
+	ray->line_height = (SCREEN_H / ray->perp_dist);
+	/*division by 0*/
+	// printf("%d\n", ray->line_height);
+	// ft_putnbr_fd(ray->line_height,2);
+	// ft_putchar_fd(' ',2);
 	ray->draw_star = SCREEN_H / 2 - ray->line_height / 2;
 	if (ray->draw_star < 0)
 		ray->draw_star = 0;

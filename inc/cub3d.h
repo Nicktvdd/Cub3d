@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:04:05 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:33:34 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int 	player_position(t_player *player, char **map);
 int		player_orientation(t_player *player, char **map);
 
 /*RayCasting*/
+void	ray_casting(t_data *data);
 void	ray_calculations(t_data *data, t_ray *ray, int x);
 void 	dda_algorithm(t_data *data, t_ray *ray);
 void	wall_calculations(t_ray *ray);
