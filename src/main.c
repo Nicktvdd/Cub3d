@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:31:43 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:37:12 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	init_data(t_data *data)
 	data->map = NULL;
 	data->texture = NULL;
 	data->color = NULL;
+	data->ray = NULL;
+	data->player = NULL;
 }
 
 int	main(int argc, char **argv)

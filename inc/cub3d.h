@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/05 17:28:31 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:04:05 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 # include <MLX42/MLX42.h>
 # include <math.h>
+# include <limits.h>
 # define SPACES " \f\n\r\t\v"
 # define MAPCODES " 01NSEW"
 # define PLAYER_P "NSEW"
@@ -37,7 +38,7 @@
 typedef struct s_player
 {
 	double	p_x;
-	double	p_y;
+	double p_y;
 	double     dir_x;
 	double		dir_y;
 	double 	plane_x;
@@ -45,15 +46,8 @@ typedef struct s_player
 }	t_player;
 
 
-typedef struct s_data
+typedef struct s_ray 
 {
-	int		fd;
-	char	**texture;
-	char	**color;
-	char	**map;
-	int 	floor_c;
-	int 	ceiling_c;
-	int		map_height;
 	double 	camera_x;
 	double	raydir_x;
 	double raydir_y;
@@ -70,9 +64,22 @@ typedef struct s_data
 	int 	line_height;
 	int		draw_star;
 	int		draw_end;
+} 	t_ray;
+
+typedef struct s_data
+{
+	int		fd;
+	char	**texture;
+	char	**color;
+	char	**map;
+	int 	floor_c;
+	int 	ceiling_c;
+	int 	wall_c;
+	int		map_height;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	t_player *player;
+	t_ray    *ray;
 	
 }			t_data;
 
@@ -116,7 +123,8 @@ int 	player_position(t_player *player, char **map);
 int		player_orientation(t_player *player, char **map);
 
 /*RayCasting*/
-void	ray_calculations(t_data *data, int x);
-void 	dda_algorithm(t_data *data);
-void	wall_calculations(t_data *data);
+void	ray_calculations(t_data *data, t_ray *ray, int x);
+void 	dda_algorithm(t_data *data, t_ray *ray);
+void	wall_calculations(t_ray *ray);
+
 #endif

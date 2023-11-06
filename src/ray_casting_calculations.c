@@ -3,98 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_calculations.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/05 17:32:20 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:22:45 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	step_sidedist_calculation(t_data *data)
+static void	step_sidedist_calculation(t_data *data, t_ray *ray)
 {
-	if (data->raydir_x < 0)
+	if (ray->raydir_x < 0)
 	{
-		data->step_x = -1;
-		data->side_dist_x = (data->player->p_x - data->map_x)
-			* data->delta_dist_x;
+		ray->step_x = -1;
+		ray->side_dist_x = (data->player->p_x - ray->map_x)
+			* ray->delta_dist_x;
 	}
 	else
 	{
-		data->step_x = 1;
-		data->side_dist_x = (data->map_x + 1 - data->player->p_x)
-			* data->delta_dist_x;
+		ray->step_x = 1;
+		ray->side_dist_x = (ray->map_x + 1 - data->player->p_x)
+			* ray->delta_dist_x;
 	}
-	if (data->raydir_y < 0)
+	if (ray->raydir_y < 0)
 	{
-		data->step_y = -1;
-		data->side_dist_y = (data->player->p_y - data->map_y)
-			* data->delta_dist_y;
+		ray->step_y = -1;
+		ray->side_dist_y = (data->player->p_y - ray->map_y)
+			* ray->delta_dist_y;
 	}
 	else
 	{
-		data->step_y = 1;
-		data->side_dist_y = (data->map_y + 1 - data->player->p_y)
-			* data->delta_dist_y;
+		ray->step_y = 1;
+		ray->side_dist_y = (ray->map_y + 1 - data->player->p_y)
+			* ray->delta_dist_y;
 	}
 }
 
-void	ray_calculations(t_data *data, int x)
+void	ray_calculations(t_data *data, t_ray *ray, int x)
 {
-	data->camera_x = 2 * x / (double)SCREEN_W - 1;
-	data->raydir_x = data->player->dir_x + data->player->plane_x
-		* data->camera_x;
-	data->raydir_y = data->player->dir_y + data->player->plane_y
-		* data->camera_x;
-	data->map_x = (int)data->player->p_x;
-	data->map_y = (int)data->player->p_y;
-	if (data->raydir_x == 0)
-		data->delta_dist_x = 1e30;
+	ray->camera_x = 2 * x / (double)SCREEN_W - 1;
+	ray->raydir_x = data->player->dir_x + data->player->plane_x
+		* ray->camera_x;
+	ray->raydir_y = data->player->dir_y + data->player->plane_y
+		* ray->camera_x;
+	ray->map_x = (int)data->player->p_x;
+	ray->map_y = (int)data->player->p_y;
+	if (ray->raydir_x == 0)
+		ray->delta_dist_x = 1e30;
 	else
-		data->delta_dist_x = fabs((1 / data->raydir_x));
-	if (data->raydir_y == 0)
-		data->delta_dist_y = 1e30;
+		ray->delta_dist_x = fabs((1 / ray->raydir_x));
+	if (ray->raydir_y == 0)
+		ray->delta_dist_y = 1e30;
 	else
-		data->delta_dist_y = fabs(1 / data->raydir_x);
-	step_sidedist_calculation(data);
+		ray->delta_dist_y = fabs(1 / ray->raydir_x);
+	step_sidedist_calculation(data, ray);
 }
 
-void	dda_algorithm(t_data *data)
+void	dda_algorithm(t_data *data, t_ray *ray)
 {
 	int	hit;
 
 	hit = TRUE;
 	while (hit == TRUE)
 	{
-		if (data->side_dist_x < data->side_dist_y)
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			data->side_dist_x += data->delta_dist_x;
-			data->map_x += data->step_x;
-			data->side = 0;
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
 		}
 		else
 		{
-			data->side_dist_y += data->delta_dist_y;
-			data->map_y += data->step_y;
-			data->side = 1;
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
 		}
-		if (data->map[data->map_x][data->map_y] == '1')
+		if (data->map[ray->map_x][ray->map_y] == '1')
 			hit = FALSE;
 	}
 }
 
-void	wall_calculations(t_data *data)
+void	wall_calculations(t_ray *ray)
 {
-	if (data->side == 0)
-		data->perp_dist = data->side_dist_x - data->delta_dist_x;
+	if (ray->side == 0)
+		ray->perp_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
-		data->perp_dist = data->side_dist_y - data->delta_dist_y;
-	data->line_height = (int)(SCREEN_H / data->perp_dist);
-	data->draw_star = SCREEN_H / 2 - data->line_height / 2;
-	if(data->draw_star < 0)
-		data->draw_star = 0;
-	data->draw_end = SCREEN_H / 2 + data->line_height / 2;
-	if(data->draw_end >= SCREEN_H )
-		data->draw_end = SCREEN_H - 1;
+		ray->perp_dist = ray->side_dist_y - ray->delta_dist_y;
+	ray->line_height = (int)(SCREEN_H / ray->perp_dist);
+	ray->draw_star = SCREEN_H / 2 - ray->line_height / 2;
+	if (ray->draw_star < 0)
+		ray->draw_star = 0;
+	ray->draw_end = SCREEN_H / 2 + ray->line_height / 2;
+	if (ray->draw_end >= SCREEN_H)
+		ray->draw_end = SCREEN_H - 1;
 }

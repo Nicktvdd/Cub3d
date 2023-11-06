@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:50:24 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 16:07:29 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:00:58 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	get_orientation(char c, t_player *player)
 {
 	if (c == 'N')
 	{
-		player->dir_x = 0;
+		player->dir_x = 0.0;
 		player->dir_y = -1;
 		player->plane_x = 0.66;
 		player->plane_y = 0;
@@ -65,13 +65,13 @@ int	player_position(t_player *player, char **map)
 			{
 				player->p_x = j;
 				player->p_y = i;
-				return (0);
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	player_orientation(t_player *player, char **map)
@@ -88,11 +88,11 @@ int	player_orientation(t_player *player, char **map)
 			if (check_delimiter(map[i][j], PLAYER_P))
 			{
 				get_orientation(map[i][j], player);
-				return (0);
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
