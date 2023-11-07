@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:56:38 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:28:08 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	draw_stuff(int x, t_ray *ray, t_data *data)
 	while (y < ray->draw_end)
 	{
 		mlx_put_pixel(data->img, x, y, data->wall_c);
-		ft_putendl_fd("puta",2);
 		y++;
 	}
 }

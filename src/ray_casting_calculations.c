@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_calculations.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 18:04:18 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:51:06 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	step_sidedist_calculation(t_data *data, t_ray *ray)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1 - data->player->p_x)
+		ray->side_dist_x = (ray->map_x + 1.0 - data->player->p_x)
 			* ray->delta_dist_x;
 	}
 	if (ray->raydir_y < 0)
@@ -35,9 +35,10 @@ static void	step_sidedist_calculation(t_data *data, t_ray *ray)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1 - data->player->p_y)
+		ray->side_dist_y = (ray->map_y + 1.0 - data->player->p_y)
 			* ray->delta_dist_y;
 	}
+	printf("%f\n", ray->side_dist_x);
 }
 
 void	ray_calculations(t_data *data, t_ray *ray, int x)
@@ -56,7 +57,7 @@ void	ray_calculations(t_data *data, t_ray *ray, int x)
 	if (ray->raydir_y == 0)
 		ray->delta_dist_y = 1e30;
 	else
-		ray->delta_dist_y = fabs(1 / ray->raydir_x);
+		ray->delta_dist_y = fabs(1 / ray->raydir_y);
 	step_sidedist_calculation(data, ray);
 }
 
@@ -90,8 +91,7 @@ void	wall_calculations(t_ray *ray)
 		ray->perp_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
 		ray->perp_dist = ray->side_dist_y - ray->delta_dist_y;
-	printf("%3lf\n", ray->perp_dist);
-	ray->line_height = (SCREEN_H / ray->perp_dist);
+	ray->line_height = (int)(SCREEN_H / ray->perp_dist);
 	/*division by 0*/
 	// printf("%d\n", ray->line_height);
 	// ft_putnbr_fd(ray->line_height,2);

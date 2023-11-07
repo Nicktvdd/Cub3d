@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_player_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:50:24 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:00:58 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:40:50 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	get_w_or_e(char c, t_player *player)
 {
 	if (c == 'W')
 	{
-		player->dir_x = -1;
-		player->dir_y = 0;
-		player->plane_x = 0;
+		player->dir_x = -1.0;
+		player->dir_y = 0.0;
+		player->plane_x = 0.0;
 		player->plane_y = 0.66;
 	}
 	else if (c == 'E')
 	{
-		player->dir_x = 1;
-		player->dir_y = 0;
-		player->plane_x = 0;
+		player->dir_x = 1.1;
+		player->dir_y = 0.0;
+		player->plane_x = 0.0;
 		player->plane_y = -0.66;
 	}
 }
@@ -35,16 +35,16 @@ void	get_orientation(char c, t_player *player)
 	if (c == 'N')
 	{
 		player->dir_x = 0.0;
-		player->dir_y = -1;
+		player->dir_y = -1.0;
 		player->plane_x = 0.66;
-		player->plane_y = 0;
+		player->plane_y = 0.0;
 	}
 	else if (c == 'S')
 	{
-		player->dir_x = 0;
-		player->dir_y = 1;
+		player->dir_x = 0.0;
+		player->dir_y = 1.0;
 		player->plane_x = -0.66;
-		player->plane_y = 0;
+		player->plane_y = 0.0;
 	}
 	else
 		get_w_or_e(c, player);
@@ -63,8 +63,8 @@ int	player_position(t_player *player, char **map)
 		{
 			if (check_delimiter(map[i][j], PLAYER_P))
 			{
-				player->p_x = j;
-				player->p_y = i;
+				player->p_x = (double)j;
+				player->p_y = (double)i;
 				return (1);
 			}
 			j++;
