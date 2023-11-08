@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/07 20:28:08 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:25:30 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	ray_casting(t_data *data)
 	int	x;
 
 	x = 0;
-	data->ray = malloc(sizeof(t_ray));
-	if (!data->ray)
-		error_msg("malloc error");
+	// data->ray = malloc(sizeof(t_ray));
+	// if (!data->ray)
+	// 	error_msg("malloc error");
 	while (x < SCREEN_W)
 	{
 		ray_calculations(data, data->ray, x);
@@ -40,7 +40,6 @@ void	ray_casting(t_data *data)
 		draw_stuff(x, data->ray, data);
 		x++;
 	}
-	ft_putendl_fd("HOLA",2);
 	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
 		error_msg("Error");	
 }

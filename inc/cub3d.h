@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:33:34 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:19:37 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ typedef struct s_data
 	int 	ceiling_c;
 	int 	wall_c;
 	int		map_height;
+	double	frameTime;
+	double	m_speed;
+	double 	rot_speed;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
 	t_player *player;
@@ -128,4 +131,15 @@ void	ray_calculations(t_data *data, t_ray *ray, int x);
 void 	dda_algorithm(t_data *data, t_ray *ray);
 void	wall_calculations(t_ray *ray);
 
+
+/*Key hook*/
+void move_up(t_data *data, t_player *player);
+void move_down(t_data *data, t_player *player);
+void move_right(t_data *data, t_player *player);
+void move_left(t_data *data, t_player *player);
+void	set_speed(t_data *data);
+
+
+/*HOOK*/
+void re_draw(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 15:37:12 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:25:47 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	init_data(t_data *data)
 	data->map = NULL;
 	data->texture = NULL;
 	data->color = NULL;
-	data->ray = NULL;
+	data->ray = malloc(sizeof(t_ray));
+	if (!data->ray)
+		error_msg("malloc error");
 	data->player = NULL;
 }
 

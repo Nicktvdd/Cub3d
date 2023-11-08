@@ -6,19 +6,28 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:56:37 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:23:32 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 //TODO: Everything into this file
-void	keys(mlx_key_data_t keydata, t_data *data)
+void	keys(t_data *data)
 {
-	if (keydata.key == MLX_KEY_ESCAPE)
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 	{
 		free_all(data);
 		mlx_close_window(data->mlx);
 	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+		move_up(data, data->player);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+		move_down(data, data->player);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		move_left(data, data->player);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		move_right(data, data->player); 
+	ray_casting(data);
 }
 
 void	star_mlx(t_data *data)
@@ -56,7 +65,8 @@ void	star_game(t_data *data)
 	set_background(data); // have to set also the textures
 	set_player(data);
 	ray_casting(data);
-	mlx_key_hook(data->mlx, &keys, data);
+	set_speed(data);
+	mlx_loop_hook(data->mlx, (void*)keys, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 }
