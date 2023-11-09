@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 12:53:56 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:37:59 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	ray_casting(t_data *data)
 	int	x;
 
 	x = 0;
-	// data->ray = malloc(sizeof(t_ray));
-	// if (!data->ray)
-	// 	error_msg("malloc error");
 	while (x < SCREEN_W)
 	{
 		ray_calculations(data, data->ray, x);
