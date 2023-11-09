@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 16:30:34 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:17:16 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ void	init_data(t_data *data)
 	data->player = NULL;
 }
 
-void	render(t_data *data)
-{
-	set_background(data); // have to set also the textures
-	ray_casting(data);
-	set_speed(data);
-	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
-		error_msg("Error");	
-	// mlx_delete_image(data->mlx, data->img);
-}
 
 int	main(int argc, char **argv)
 {

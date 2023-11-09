@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:11:04 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:20:22 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ void	keys(t_data *data)
 		rotate_right(data, data->player);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		rotate_left(data, data->player);
+}
+
+void	render(t_data *data)
+{
+	set_background(data); // have to set also the textures
+	ray_casting(data);
+	set_speed(data);
+	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
+		error_msg("Error");
 }
 
 void	star_mlx(t_data *data)

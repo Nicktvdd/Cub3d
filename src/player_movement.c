@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:44:56 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 17:48:40 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:30:55 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	move_up(t_data *data, t_player *player)
 	x = (int)player->p_x;
 	y = (int)(player->p_y + player->dir_y * data->m_speed);
 	if (data->map[y][x] != '1')
-		player->p_y += player->dir_y;
+		player->p_y += player->dir_y * data->m_speed;
 	ft_memset(data->img->pixels, 0, data->img->width * data->img->height
 		* sizeof(int32_t));
 	render(data);
