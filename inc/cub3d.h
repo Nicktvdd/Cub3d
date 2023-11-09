@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/08 18:19:37 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:52:16 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void 		star_game(t_data *data);
 
 void	draw_floor_ceiling(t_data *data);
 void	define_color(t_data *data);
+void	set_background(t_data *data);
+void	render(t_data *data);
 
 /*Player stuff*/
 int 	player_position(t_player *player, char **map);
@@ -138,8 +140,11 @@ void move_down(t_data *data, t_player *player);
 void move_right(t_data *data, t_player *player);
 void move_left(t_data *data, t_player *player);
 void	set_speed(t_data *data);
+void	rotate_right(t_data *data, t_player *player);
+void	rotate_left(t_data *data, t_player *player);
 
 
 /*HOOK*/
-void re_draw(t_data *data);
+void close_game(t_data *data);
+
 #endif

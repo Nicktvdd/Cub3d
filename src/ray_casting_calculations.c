@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_calculations.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/07 20:51:06 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:25:03 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	step_sidedist_calculation(t_data *data, t_ray *ray)
 		ray->side_dist_y = (ray->map_y + 1.0 - data->player->p_y)
 			* ray->delta_dist_y;
 	}
-	printf("%f\n", ray->side_dist_x);
 }
 
 void	ray_calculations(t_data *data, t_ray *ray, int x)

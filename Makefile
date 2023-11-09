@@ -1,4 +1,4 @@
-NAME	:= cub3d
+NAME	:= cub3D
 
 LIBFT_DIR = ./libraries/libft/
 LIBFT := $(LIBFT_DIR)/libft.a
@@ -24,7 +24,7 @@ C_FLAGS	:= -Wextra -Wall -Wunreachable-code  -Ofast -g -fsanitize=address # -Ofa
 SRC		:=  main.c parse_map_utils.c parse_utils.c\
 			error_msg.c ft_free.c start_map.c check_map.c \
 			check_map_utils.c start_game.c draw.c set_player_utils.c ray_casting.c ray_casting_calculations.c \
-			player_movement.c start_game_utils.c\
+			player_movement.c start_game_utils.c player_rotation.c\
 
 DEP		:= $(OBJ:.o=.d)
 

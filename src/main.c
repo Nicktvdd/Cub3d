@@ -6,31 +6,21 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/08 18:25:47 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:30:34 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	start_position(t_data *data)
+void	set_player(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i] != NULL)
-	{
-		j = 0;
-		while (data->map[i][j] != '\0')
-		{
-			if (!check_delimiter(data->map[i][j], PLAYER_P))
-			{
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
+	data->player = malloc(sizeof(t_player));
+	if (!data->player)
+		error_msg("Malloc Error");
+	if (!player_position(data->player, data->map))
+		error_msg("Error, no player position");
+	if (!player_orientation(data->player, data->map))
+		error_msg("Erros invalid orientation");
 	data->map_height = get_map_height(data->map);
 }
 
@@ -45,6 +35,16 @@ void	init_data(t_data *data)
 	data->player = NULL;
 }
 
+void	render(t_data *data)
+{
+	set_background(data); // have to set also the textures
+	ray_casting(data);
+	set_speed(data);
+	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
+		error_msg("Error");	
+	// mlx_delete_image(data->mlx, data->img);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	init_map(&data, argv);
 	check_map(data.map);
-	start_position(&data);
+	set_player(&data);
 	star_game(&data);
 	return (0);
 }

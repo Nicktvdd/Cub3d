@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/08 18:25:30 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:53:56 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,4 @@ void	ray_casting(t_data *data)
 		draw_stuff(x, data->ray, data);
 		x++;
 	}
-	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
-		error_msg("Error");	
 }
