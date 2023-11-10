@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 16:25:03 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:08:04 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static void	step_sidedist_calculation(t_data *data, t_ray *ray)
 	if (ray->raydir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->side_dist_x = (data->player->p_x - ray->map_x)
+		ray->side_dist_x = (data->player->p_x - (double)ray->map_x)
 			* ray->delta_dist_x;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - data->player->p_x)
+		ray->side_dist_x = ((double)ray->map_x + 1.0 - data->player->p_x)
 			* ray->delta_dist_x;
 	}
 	if (ray->raydir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->side_dist_y = (data->player->p_y - ray->map_y)
+		ray->side_dist_y = (data->player->p_y - (double)ray->map_y)
 			* ray->delta_dist_y;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - data->player->p_y)
+		ray->side_dist_y = ((double)ray->map_y + 1.0 - data->player->p_y)
 			* ray->delta_dist_y;
 	}
 }
@@ -47,8 +47,8 @@ void	ray_calculations(t_data *data, t_ray *ray, int x)
 		* ray->camera_x;
 	ray->raydir_y = data->player->dir_y + data->player->plane_y
 		* ray->camera_x;
-	ray->map_x = (int)data->player->p_x;
-	ray->map_y = (int)data->player->p_y;
+	ray->map_x = (int)(data->player->p_x);
+	ray->map_y = (int)(data->player->p_y);
 	if (ray->raydir_x == 0)
 		ray->delta_dist_x = 1e30;
 	else

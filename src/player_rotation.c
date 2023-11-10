@@ -6,13 +6,13 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:48:52 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:11:43 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:03:41 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	rotate_left(t_data *data, t_player *player)
+void	rotate_right(t_data *data, t_player *player)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -32,7 +32,7 @@ void	rotate_left(t_data *data, t_player *player)
 	render(data);
 }
 
-void	rotate_right(t_data *data, t_player *player)
+void	rotate_left(t_data *data, t_player *player)
 {
 	double old_dir_x;
 	double old_plane_x;

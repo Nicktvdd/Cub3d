@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:50:24 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:27:37 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:57:28 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	get_w_or_e(char c, t_player *player)
 {
 	if (c == 'W')
 	{
-		player->dir_x = -0.8;
+		player->dir_x = -1.0;
 		player->dir_y = 0.0;
 		player->plane_x = 0.0;
-		player->plane_y = 0.33;
+		player->plane_y = -0.66;
 	}
 	else if (c == 'E')
 	{
-		player->dir_x = 0.8;
+		player->dir_x = 1.0;
 		player->dir_y = 0.0;
 		player->plane_x = 0.0;
-		player->plane_y = -0.33;
+		player->plane_y = 0.66;
 	}
 }
 
@@ -35,15 +35,15 @@ void	get_orientation(char c, t_player *player)
 	if (c == 'N')
 	{
 		player->dir_x = 0.0;
-		player->dir_y = -0.8;
-		player->plane_x = 0.33;
+		player->dir_y = -1.0;
+		player->plane_x = 0.66;
 		player->plane_y = 0.0;
 	}
 	else if (c == 'S')
 	{
 		player->dir_x = 0.0;
-		player->dir_y = 0.8;
-		player->plane_x = -0.33;
+		player->dir_y = 1.0;
+		player->plane_x = -0.66;
 		player->plane_y = 0.0;
 	}
 	else
