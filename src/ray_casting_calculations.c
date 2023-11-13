@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:12:42 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/10 18:08:04 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:43:58 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	dda_algorithm(t_data *data, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->map[ray->map_x][ray->map_y] == '1')
+		if (data->map[ray->map_y][ray->map_x] == '1')
 			hit = FALSE;
 	}
 }
@@ -96,6 +96,8 @@ void	wall_calculations(t_ray *ray)
 	// ft_putnbr_fd(ray->line_height,2);
 	// ft_putchar_fd(' ',2);
 	ray->draw_star = SCREEN_H / 2 - ray->line_height / 2;
+	// ft_putnbr_fd(ray->draw_star,2);
+	// ft_putendl_fd(" ",2);
 	if (ray->draw_star < 0)
 		ray->draw_star = 0;
 	ray->draw_end = SCREEN_H / 2 + ray->line_height / 2;
