@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 17:52:16 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:29:19 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define PLAYER_P "NSEW"
 # define SCREEN_W 1024
 # define SCREEN_H 512
+# define TEXTURE_W 64
+# define TEXTURE_H 64
 # define TRUE 1
 # define FALSE 0
 
@@ -64,6 +66,9 @@ typedef struct s_ray
 	int 	line_height;
 	int		draw_star;
 	int		draw_end;
+	double	wall_x;
+	int		text_x;
+	int 	text_y;
 } 	t_ray;
 
 typedef struct s_data
