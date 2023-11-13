@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/13 12:14:39 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:52:00 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	set_player(t_data *data)
 	if (!player_position(data->player, data->map))
 		error_msg("Error, no player position");
 	if (!player_orientation(data->player, data->map))
-		error_msg("Erros invalid orientation");
+		error_msg("Error, invalid orientation");
 }
 
 void	start_game(t_data *data)
