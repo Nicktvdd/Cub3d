@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:56:15 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:14:39 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 void	keys(mlx_key_data_t keydata, t_data *data)
 {
+  	int move = 2;
+    
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
 		free_all(data);
 		mlx_close_window(data->mlx);
 	}
+  	printf("image instance\n y: %i\n x: %i\n", data->img->instances[0].y, data->img->instances[0].x);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_UP))
+		data->img->instances[0].y -= move;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN))
+		data->img->instances[0].y += move;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		data->img->instances[0].x -= move;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		data->img->instances[0].x += move;
 }
 
 void	start_mlx(t_data *data)

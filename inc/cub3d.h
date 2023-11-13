@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:06:12 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:05:21 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	draw_map2D(t_data *data);
 void	draw_player(t_data *data);
 
 /* Hooks */
-void	ft_hook(void* param);
+void	ft_hook(t_data *data);
 
 /*Draw stuff*/
 void	draw_floor_ceiling(t_data *data);

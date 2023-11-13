@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:48:07 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/11/02 15:21:05 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:14:58 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void	minimap(t_data *data)
 	draw_player(data); // - drawing player
 	if (mlx_image_to_window(data->mlx, data->img, ((MINIMAPSIZE / 2) - (PLAYERSIZE / 2) /* half of player */), (MINIMAPSIZE / 2 - (PLAYERSIZE / 2))) == -1) // player position here
 		error_exit(data->mlx);
+   // mlx_loop_hook(data->mlx, ft_hook, data->mlx);
 }
