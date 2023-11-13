@@ -1,4 +1,4 @@
-NAME	:= cub3d
+NAME	:= cub3D
 
 LIBFT_DIR = ./libraries/libft/
 LIBFT := $(LIBFT_DIR)/libft.a
@@ -60,6 +60,6 @@ fclean: clean
 re: fclean all
 
 test: all
-	./cub3d maps/map.cub
+	./cub3D maps/map.cub
 
 .PHONY: all, clean, fclean, re, libmlx
