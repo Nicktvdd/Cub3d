@@ -6,45 +6,26 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:58:34 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:17:25 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 //TODO: check map pre-data
-int	ft_strstr(char *big, char *little)
+//Checks the file extension if .cub - simplified
+int	check_file(char **argument)
 {
-	size_t	j;
+  int len;
 
-	j = 0;
-	if (ft_strlen(little) == 0)
-		return (0);
-	while (*big != '\0')
-	{
-		if (*little == *big)
-		{
-			j = 1;
-			while (little[j] == big[j] && little[j] != '\0')
-			{
-				j++;
-			}
-			if (little[j] == '\0')
-				break ;
-		}
-		big++;
-	}
-	if (little[j] == '\0' && big[j] == '\0')
-		return (1);
+  len = ft_strlen(argument[1]);
+  printf("--------%c-------\n",argument[1][len - 1]);
+  if (argument[1][--len] == 'b' && argument[1][--len] == 'u' 
+    && argument[1][--len] == 'c' && argument[1][--len] == '.')
+    return (1);
 	return (0);
 }
 
-int	check_file(char **argument)
-{
-	if (!ft_strstr(argument[1], ".cub"))
-		return (0);
-	return (1);
-}
-
+//Parses map data from a line and updates the data structure accordingly
 int	is_data(char *line, char **info, t_data **data)
 {
 	char	**new_line;
@@ -72,6 +53,7 @@ int	is_data(char *line, char **info, t_data **data)
 	free_argt(new_line);
 	return (1);
 }
+
 
 int	check_delimiter(char c, char *delimiter)
 {
