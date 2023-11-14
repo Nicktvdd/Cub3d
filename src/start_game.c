@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/13 12:14:39 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:31:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	start_game(t_data *data)
 {
 	start_mlx(data);
 	set_background(data); // have to set also the textures
-	set_player(data);
+	//set_player(data);
 	//ray_casting(data);
-	minimap(data);
-	mlx_key_hook(data->mlx, &keys, data);
-	mlx_loop(data->mlx);
+	//minimap(data);
+	//mlx_key_hook(data->mlx, &keys, data);
+	//mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 }
