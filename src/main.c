@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/02 14:55:37 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:03:39 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	init_map(&data, argv);
 	check_map(data.map);
-	start_game(&data);
 	start_position(&data);
 	start_game(&data);
 	return (0);
