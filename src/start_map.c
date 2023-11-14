@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/14 11:27:12 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:12:39 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_info(char **data)
 	i = 0;
 	while (data[i] != NULL)
 	{
-		ft_putendl_fd(data[i],2);
+		//ft_putendl_fd(data[i],2);
 		i++;
 	}
 }
@@ -116,6 +116,6 @@ void	init_map(t_data *data, char **argv)
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
 	data->map = parse_map(fd);
-	print_info(data->color);
+	//print_info(data->color);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:29:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/14 13:07:41 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:36:51 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,39 @@ int	check_spaces(char **map)
 {
 	int	i;
 	int	j;
+	int len;
+	int nextlen;
 
 	i = 0;
 	j = 0;
+	len = 0;
 	while (map[i])
 	{
+		if (map[i + 1])
+			nextlen = ft_strlen(map[i + 1]);
 		while (map[i][j])
 		{
 			if (map[i][j] == '0')
 			{
 				if (i == 0 || j == 0)
 					return (0);
-				if (!map[i + 1] || !map[i][j + 1] || !map[i + 1][j + 1])
+				if (j >= len || j >= nextlen)
 					return (0);
-/* 				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
+				if (!map[i + 1] || !map[i][j + 1] || !map[i + 1][j])
+					return (0);
+				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
 					return (0);
 				if (map[i][j - 1] == ' ' || map[i][j + 1] == ' ')
 					return (0);
-				if (map[i - 1][j - 1] == ' ' || map[i + 1][j + 1] == ' ')
-					return (0); */
 				// return 0 if error
 			}
 			j++;
 		}
+		len = ft_strlen(map[i]);
+		printf("strlen:%i\n", len);
 		i++;
 		j = 0;
+		
 	}
 	return (1);
 }
