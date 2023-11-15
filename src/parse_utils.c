@@ -6,26 +6,26 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/13 18:46:02 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/15 08:50:33 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-//TODO: check map pre-data
-//Checks the file extension if .cub - simplified
+
+// TODO: check map pre-data
+// Checks the file extension if .cub - simplified
 int	check_file(char **argument)
 {
-  int len;
+	int	len;
 
-  len = ft_strlen(argument[1]);
-  printf("--------%c-------\n",argument[1][len - 1]);
-  if (argument[1][--len] == 'b' && argument[1][--len] == 'u' 
-    && argument[1][--len] == 'c' && argument[1][--len] == '.')
-    return (1);
+	len = ft_strlen(argument[1]);
+	if (argument[1][--len] == 'b' && argument[1][--len] == 'u'
+		&& argument[1][--len] == 'c' && argument[1][--len] == '.')
+		return (1);
 	return (0);
 }
 
-//Parses map data from a line and updates the data structure accordingly
+// Parses map data from a line and updates the data structure accordingly
 int	is_data(char *line, char **info, t_data **data)
 {
 	char	**new_line;

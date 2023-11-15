@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:02 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:57:47 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	check_walls(char **map)
 	if (!check_last_row(map))
 		return (0);
 	if (!check_last_col(map))
+		return (0);
+	if (!check_spaces(map))
 		return (0);
 	return (1);
 }
