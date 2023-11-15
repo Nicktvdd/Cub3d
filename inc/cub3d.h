@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/13 18:29:19 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:40:34 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ typedef struct s_data
 	double 	rot_speed;
 	mlx_t   *mlx;
 	mlx_image_t	*img;
+	mlx_texture_t *text_1;
+	mlx_texture_t *text_2;
+	mlx_texture_t *text_3;
+	mlx_texture_t *text_4;
+	mlx_texture_t *text_to_draw;
 	t_player *player;
 	t_ray    *ray;
 	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:06:09 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:34:12 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ void	init_map(t_data *data, char **argv)
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
 	data->map = parse_map(fd);
-	// print_info(data->texture);
+	// print_info(data->color);
 	close(fd);
 }

@@ -6,11 +6,45 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/13 18:36:52 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:28:03 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	wall_color(t_data *data, t_ray *ray)
+{
+	int	color;
+	int	x;
+	int	y;
+	int	index;
+
+	y = ray->text_y * data->text_to_draw->height;
+	x = ray->text_x * data->text_to_draw->width;
+	index = y * data->text_to_draw->bytes_per_pixel * data->text_to_draw->width
+		+ x * data->text_to_draw->bytes_per_pixel;
+	// color = data->text_to_draw->pixels[index] << 24 | data->text_to_draw->pixels[index
+	// 	+ 1] << 16 | data->text_to_draw->pixels[index + 2] << 8;
+	return (color);
+}
+
+void	select_texture(t_data *data, t_ray *ray)
+{
+	if (ray->side == 0)
+	{
+		if (ray->map_x > data->player->p_x)
+			data->text_to_draw = data->text_1;
+		else
+			data->text_to_draw = data->text_2;
+	}
+	else if (ray->side == 1)
+	{
+		if (ray->map_y > data->player->p_y)
+			data->text_to_draw = data->text_3;
+		else
+			data->text_to_draw = data->text_4;
+	}
+}
 
 void	texturing_calculations(t_data *data, t_ray *ray)
 {
@@ -39,9 +73,11 @@ void	draw_stuff(int x, t_ray *ray, t_data *data)
 	{
 		ray->text_y = (int)texture_pos & (TEXTURE_H - 1);
 		texture_pos += step;
-		/*TODO: We have to find nice textures, and recreat here, and then decide the wall color */
-		if (ray->side == 1)
-			data->wall_c = (data->wall_c >> 1) & 8355711;
+		/*TODO: We have to find nice textures, and recreat here,
+			and then decide the wall color */
+		// if (ray->side == 1)
+		// 	data->wall_c = (data->wall_c >> 1) & 8355711;
+		data->wall_c = wall_color(data, ray);
 		mlx_put_pixel(data->img, x, y, data->wall_c);
 		y++;
 	}
@@ -57,6 +93,7 @@ void	ray_casting(t_data *data)
 		ray_calculations(data, data->ray, x);
 		dda_algorithm(data, data->ray);
 		wall_calculations(data->ray);
+		select_texture(data, data->ray);
 		texturing_calculations(data, data->ray);
 		draw_stuff(x, data->ray, data);
 		x++;

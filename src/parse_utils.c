@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:58:34 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:27:26 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	is_data(char *line, char **info, t_data **data)
 {
 	char	**new_line;
 
-	new_line = ft_split(line, '\n');
-	if (!new_line[0])
+	new_line = ft_split(info[1], '\n');
+	if (!new_line[0] || !new_line)
 		return (0);
 	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
 		(*data)->texture[0] = ft_strdup(new_line[0]);

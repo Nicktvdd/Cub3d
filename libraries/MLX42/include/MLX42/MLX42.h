@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/11/08 16:46:10 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:26:05 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,7 @@ typedef struct mlx_texture
 	uint32_t	height;
 	uint8_t		bytes_per_pixel;
 	uint8_t*	pixels;
-}	mlx_texture_t;
+}	 mlx_texture_t;
 
 /**
  * Struct containing data regarding an XPM image.

@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ../Cub3d/textures/eagle.png
+SO ../Cub3d/textures/greystone.png
+WE ../Cub3d/textures/greystone.png
+EA ../Cub3d/textures/greystone.png
 
 F 220,100,0
 C 225,30,0

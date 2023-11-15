@@ -6,11 +6,27 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:17:16 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:57:00 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	set_textures(t_data *data)
+{
+	data->text_1 = mlx_load_png(data->texture[0]);
+	if (!data->text_1)
+		error_msg("Error loading textures");
+	data->text_2 = mlx_load_png(data->texture[1]);
+	if (!data->text_2)
+		error_msg("Error loading textures");
+	data->text_3 = mlx_load_png(data->texture[2]);
+	if (!data->text_3)
+		error_msg("Error loading textures");
+	data->text_4 = mlx_load_png(data->texture[3]);
+	if (!data->text_4)
+		error_msg("Error loading textures");
+}
 
 void	set_player(t_data *data)
 {
@@ -35,7 +51,6 @@ void	init_data(t_data *data)
 	data->player = NULL;
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -48,6 +63,7 @@ int	main(int argc, char **argv)
 	init_map(&data, argv);
 	check_map(data.map);
 	set_player(&data);
+	set_textures(&data);
 	star_game(&data);
 	return (0);
 }
