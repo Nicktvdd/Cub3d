@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/16 17:52:05 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:23:49 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ int	wall_color(t_data *data, t_ray *ray)
 
 	y = ray->text_y * data->text_to_draw->height;
 	x = ray->text_x * data->text_to_draw->width;
+	index = y * data->text_to_draw->bytes_per_pixel * data->text_to_draw->width
+		+ x * data->text_to_draw->bytes_per_pixel;
+	printf("%d\n", data->text_to_draw->pixels[0]);
+	color = data->text_to_draw->pixels[index] << 24 | data->text_to_draw->pixels[index
+		+ 1] << 16 | data->text_to_draw->pixels[index + 2] << 8 | 0xFF;
 	return (color);
 }
 
