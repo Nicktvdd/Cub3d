@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/15 19:28:03 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:52:05 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ int	wall_color(t_data *data, t_ray *ray)
 
 	y = ray->text_y * data->text_to_draw->height;
 	x = ray->text_x * data->text_to_draw->width;
-	index = y * data->text_to_draw->bytes_per_pixel * data->text_to_draw->width
-		+ x * data->text_to_draw->bytes_per_pixel;
-	// color = data->text_to_draw->pixels[index] << 24 | data->text_to_draw->pixels[index
-	// 	+ 1] << 16 | data->text_to_draw->pixels[index + 2] << 8;
 	return (color);
 }
 
@@ -52,6 +48,7 @@ void	texturing_calculations(t_data *data, t_ray *ray)
 		ray->wall_x = data->player->p_y + ray->perp_dist * ray->raydir_y;
 	else
 		ray->wall_x = data->player->p_x + ray->perp_dist * ray->raydir_x;
+	ray->wall_x -= floor(ray->wall_x);
 	ray->text_x = (int)(ray->wall_x * (double)TEXTURE_W);
 	if (ray->side == 0 && ray->raydir_x > 0)
 		ray->text_x = TEXTURE_W - ray->text_x - 1;
@@ -66,8 +63,8 @@ void	draw_stuff(int x, t_ray *ray, t_data *data)
 	double	texture_pos;
 
 	y = ray->draw_star;
-	step = 1.0 * TEXTURE_H / ray->line_height;
-	texture_pos = ((ray->draw_star - SCREEN_H) / 2 + (ray->line_height / 2))
+	step = 1.0 * ((double)TEXTURE_H) / ray->line_height;
+	texture_pos = (ray->draw_star - (SCREEN_H / 2) + (ray->line_height / 2))
 		* step;
 	while (y < ray->draw_end)
 	{
