@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/15 18:40:34 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:28:15 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_data
 	char	**map;
 	int 	floor_c;
 	int 	ceiling_c;
-	int 	wall_c;
+	uint32_t	wall_c;
 	int		map_height;
 	double	frameTime;
 	double	m_speed;
