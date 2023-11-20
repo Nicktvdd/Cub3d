@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:14:17 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:25:33 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	keys(t_data *data)
 
 void	render(t_data *data)
 {
-	set_background(data); // have to set also the textures
+	set_background(data); 
 	ray_casting(data);
 	set_speed(data);
 	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)

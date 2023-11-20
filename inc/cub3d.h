@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:11:42 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:29:10 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@
 typedef struct s_player
 {
 	double	p_x;
-	double p_y;
-	double     dir_x;
-	double		dir_y;
+	double	p_y;
+	double	dir_x;
+	double	dir_y;
 	double 	plane_x;
 	double 	plane_y;
 }	t_player;
@@ -126,6 +126,7 @@ int		check_delimiter(char c, char *delimiter);
 int		check_first_rc(char **map);
 int		check_last_col(char **map);
 int		check_last_row(char **map);
+int		check_color(t_data *data);
 
 /*Error tools*/
 void	error_msg(char *msg);
@@ -158,16 +159,16 @@ void	wall_calculations(t_ray *ray);
 
 
 /*Key hook*/
-void move_up(t_data *data, t_player *player);
-void move_down(t_data *data, t_player *player);
-void move_right(t_data *data, t_player *player);
-void move_left(t_data *data, t_player *player);
+void	move_up(t_data *data, t_player *player);
+void	move_down(t_data *data, t_player *player);
+void	move_right(t_data *data, t_player *player);
+void	move_left(t_data *data, t_player *player);
 void	set_speed(t_data *data);
 void	rotate_right(t_data *data, t_player *player);
 void	rotate_left(t_data *data, t_player *player);
 
 
 /*HOOK*/
-void close_game(t_data *data);
+void	close_game(t_data *data);
 
 #endif

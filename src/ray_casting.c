@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/17 16:59:13 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:29:31 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	texturing_calculations(t_data *data, t_ray *ray)
 		ray->wall_x = data->player->p_x + ray->perp_dist * ray->raydir_x;
 	ray->wall_x -= floor(ray->wall_x);
 	ray->text_x = (int)(ray->wall_x * (double)TEXTURE_W);
-	printf("%d\n", ray->text_x);
 	if (ray->side == 0 && ray->raydir_x > 0)
 		ray->text_x = TEXTURE_W - ray->text_x - 1;
 	if (ray->side == 1 && ray->raydir_y < 0)

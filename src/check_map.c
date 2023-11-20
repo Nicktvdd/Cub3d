@@ -6,11 +6,16 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/14 12:57:47 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:22:54 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	check_color(t_data *data)
+{
+	print_info(data->color);
+}
 
 int	check_walls(char **map)
 {
