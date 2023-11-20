@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/05 16:34:10 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:39:49 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	is_empty_line(char *line)
 
 int	is_map(char *line)
 {
-	int	i;
-
-	i = 0;
 	if (line[0] == '\n' || !line)
 		return (0);
 	if (!is_empty_line(line))

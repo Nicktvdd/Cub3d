@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:20:22 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:10:52 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	render(t_data *data)
 		error_msg("Error");
 }
 
-void	star_mlx(t_data *data)
+void	start_mlx(t_data *data)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	data->mlx = mlx_init(SCREEN_W, SCREEN_H, "NICKJUAN", true);
@@ -49,7 +49,7 @@ void	star_mlx(t_data *data)
 		error_msg("Error with new image");
 }
 
-void	star_game(t_data *data)
+void	start_game(t_data *data)
 {
 	star_mlx(data);
 	render(data);

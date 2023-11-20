@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:55:24 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/10/31 14:17:35 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:18:13 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 //TODO: make this work with the map
-#define PLAYERSIZE 5
-#define MINIMAPSIZE (HEIGHT / 3)
+
 
 void	error_exit(mlx_t* mlx);
 static mlx_image_t* image;
@@ -75,7 +74,7 @@ void	draw_map2D(uint32_t sizeY, uint32_t sizeX)
     while (i < backgr->height && i < PIXELSIZE)  // Ensure we stay within bounds of map
     {
         uint32_t j = 0;
-        uint32_t y = i * sizeY; 
+        uint32_t y = i * sizeY;
         while (j < backgr->width && j < PIXELSIZE)  // Ensure we stay within bounds of map
         {
 			uint32_t x = j * sizeX;
@@ -85,7 +84,7 @@ void	draw_map2D(uint32_t sizeY, uint32_t sizeX)
 				uint32_t draw_x = x; 
 				while (draw_x < x + sizeX && draw_x < backgr->width)
 				{
-					if (map[i][j] == 1)
+					if (data->map[i][j] == 1)
 						mlx_put_pixel(backgr, draw_x, draw_y, wall_color);
 					else
 						mlx_put_pixel(backgr, draw_x, draw_y, empty_color);
