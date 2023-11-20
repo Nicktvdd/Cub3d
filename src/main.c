@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:11:24 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:13:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int	main(int argc, char **argv)
 	check_map(data.map);
 	set_player(&data);
 	set_textures(&data);
-	star_game(&data);
+	start_game(&data);
 	return (0);
 }

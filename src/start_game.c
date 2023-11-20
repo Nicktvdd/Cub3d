@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:10:52 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:14:17 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	start_mlx(t_data *data)
 
 void	start_game(t_data *data)
 {
-	star_mlx(data);
+	start_mlx(data);
 	render(data);
 	mlx_loop_hook(data->mlx, (void *)keys, data);
 	mlx_loop(data->mlx);
