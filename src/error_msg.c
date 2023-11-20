@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:52:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:31:26 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:40:56 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	error_msg(char *msg)
 	exit(1);
 }
 
-void	error_exit(mlx_t* mlx)
+void	error_exit(mlx_t *mlx)
 {
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		exit(EXIT_FAILURE);
+	mlx_close_window(mlx);
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
 }

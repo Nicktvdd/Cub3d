@@ -23,7 +23,7 @@ C_FLAGS	:= -Wextra -Wall -Wunreachable-code  -Ofast -g  -fsanitize=address # -Of
 
 SRC		:=  main.c parse_map_utils.c parse_map_utils_2.c\
 			error_msg.c ft_free.c parse_map.c check_map.c \
-			check_map_utils.c start_game.c draw.c set_player_utils.c ray_casting.c ray_casting_calculations.c \
+			check_map_utils.c start_game.c ray_casting_draw.c set_player_utils.c ray_casting.c ray_casting_calculations.c \
 			player_movement.c start_game_utils.c player_rotation.c check_data.c\
 
 DEP		:= $(OBJ:.o=.d)
