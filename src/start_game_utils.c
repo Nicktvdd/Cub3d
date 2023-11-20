@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:05:44 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:54:56 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:31:32 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 void	set_speed(t_data *data)
 {
-	data->frameTime = 20.0 / 1000.0;
-	data->m_speed = data->frameTime * 5.0;
-	data->rot_speed = data->frameTime * 3.0;
+	data->m_speed = data->mlx->delta_time * 5.0;
+	data->rot_speed = data->mlx->delta_time * 3.0;
 }
 
 void	set_background(t_data *data)
 {
 	define_color(data);
 	draw_floor_ceiling(data);
-	// if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
-	// 	error_msg("Error");
 }
 
 void close_game(t_data *data)

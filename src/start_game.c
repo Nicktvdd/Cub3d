@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:14:17 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:31:51 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	keys(t_data *data)
 
 void	render(t_data *data)
 {
-	set_background(data); // have to set also the textures
+	ft_memset(data->img->pixels, 0, data->img->width * data->img->height
+		* sizeof(int32_t));
+	set_background(data);
 	ray_casting(data);
 	set_speed(data);
-	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
-		error_msg("Error");
 }
 
 void	start_mlx(t_data *data)
@@ -47,13 +47,15 @@ void	start_mlx(t_data *data)
 		error_msg("Error");
 	if (!(data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H)))
 		error_msg("Error with new image");
+	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
+		error_msg("Error");
 }
 
 void	start_game(t_data *data)
 {
 	start_mlx(data);
-	render(data);
 	mlx_loop_hook(data->mlx, (void *)keys, data);
+	mlx_loop_hook(data->mlx, (void *)render, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 }
