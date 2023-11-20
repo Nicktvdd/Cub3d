@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 16:25:23 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:18:24 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int		get_map_height(char **map);
 /*Parse utils*/
 
 int		check_file(char **argument);
-int		is_data(char *line, char **info, t_data **data);
+int		is_data(char **info, t_data **data);
 int		is_empty(char *line);
 int		check_delimiter(char c, char *delimiter);
 int		check_first_rc(char **map);

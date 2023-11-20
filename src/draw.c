@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:00:35 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:24:36 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:08:44 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	define_color(t_data *data)
 {
 	data->floor_c = get_rgb(210, 150, 100);
 	data->ceiling_c = get_rgb(150, 50, 100);
-	// data->wall_c  = get_rgb(200, 200, 0);
 }
 
 void	draw_floor_ceiling(t_data *data)
