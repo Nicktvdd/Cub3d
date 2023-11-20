@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:29:10 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:06:02 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@
 # define TEXTURE_H 64
 # define TRUE 1
 # define FALSE 0
-
-
-
 
 typedef struct s_player
 {
@@ -127,6 +124,7 @@ int		check_first_rc(char **map);
 int		check_last_col(char **map);
 int		check_last_row(char **map);
 int		check_color(t_data *data);
+int		check_spaces(char **map);
 
 /*Error tools*/
 void	error_msg(char *msg);
