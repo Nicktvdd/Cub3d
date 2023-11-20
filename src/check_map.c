@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:22:54 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:37:37 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_wrong_input(char **map)
 		while (map[i][j] != '\0')
 		{
 			if (!check_delimiter(map[i][j], MAPCODES))
-				return(0);
+				return (0);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:11:12 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:38:19 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	is_data(char *line, char **info, t_data **data)
 	return (1);
 }
 
-//Checks if a character is a delimiter
+// Checks if a character is a delimiter
 int	check_delimiter(char c, char *delimiter)
 {
 	int	j;
@@ -69,7 +69,7 @@ int	check_delimiter(char c, char *delimiter)
 	return (0);
 }
 
-//Checks if a line is empty or contains only whitespace characters
+// Checks if a line is empty or contains only whitespace characters
 int	is_empty(char *line)
 {
 	int	i;

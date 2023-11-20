@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:29:31 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:38:28 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ uint32_t	wall_color(t_data *data, t_ray *ray)
 	index = y * (int)data->text_to_draw->height
 		* (int)data->text_to_draw->bytes_per_pixel + x
 		* (int)data->text_to_draw->bytes_per_pixel;
-	color = data->text_to_draw->pixels[index] << 24
-		| data->text_to_draw->pixels[index + 1] << 16
-		| data->text_to_draw->pixels[index + 2] << 8 | 255;
+	color = data->text_to_draw->pixels[index] << 24 | data->text_to_draw->pixels[index
+		+ 1] << 16 | data->text_to_draw->pixels[index + 2] << 8 | 255;
 	return (color);
 }
 
@@ -71,7 +70,7 @@ void	draw_stuff(int x, t_ray *ray, t_data *data)
 	y = ray->draw_star;
 	step = 1.0 * ((double)TEXTURE_H) / (double)ray->line_height;
 	texture_pos = ((double)ray->draw_star - ((double)SCREEN_H / 2.0)
-			+ ((double)ray->line_height / 2.0)) * step;
+		+ ((double)ray->line_height / 2.0)) * step;
 	while (y < ray->draw_end)
 	{
 		ray->text_y = (int)texture_pos & (TEXTURE_H - 1);

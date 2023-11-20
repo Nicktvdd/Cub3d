@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:29:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:33:45 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:37:16 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_spaces(char **map)
 
 	i = -1;
 	j = -1;
-  //TODO: Initialize len and nextlen, remove printf
+	// TODO: Initialize len and nextlen, remove printf
 	while (map[++i])
 	{
 		if (map[i + 1])
