@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/14 12:57:47 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:47:55 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+
+int	check_first_rc(char **map)
+{
+	int	i;
+	int	height;
+
+	i = 0;
+	height = get_map_height(map);
+	while (map[0][i] != '\0')
+	{
+		if (map[0][i] != '1' && map[0][i] != ' ')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (i < height)
+	{
+		if (map[i][0] != '1' && map[0][i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	check_walls(char **map)
 {

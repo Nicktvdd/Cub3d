@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:29:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:42:29 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:27:58 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	check_spaces(char **map)
 
 	i = -1;
 	j = -1;
-  //TODO: Initialize len and nextlen, remove printf
 	while (map[++i])
 	{
 		if (map[i + 1])
@@ -47,7 +46,6 @@ int	check_spaces(char **map)
 			}
 		}
 		len = ft_strlen(map[i]);
-		printf("len = %i\n", len);
 		j = 0;
 	}
 	return (1);
@@ -66,29 +64,6 @@ int	get_map_height(char **map)
 		i++;
 	}
 	return (height);
-}
-
-int	check_first_rc(char **map)
-{
-	int	i;
-	int	height;
-
-	i = 0;
-	height = get_map_height(map);
-	while (map[0][i] != '\0')
-	{
-		if (map[0][i] != '1' && map[0][i] != ' ')
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (i < height)
-	{
-		if (map[i][0] != '1' && map[0][i] != ' ')
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 int	check_last_row(char **map)
