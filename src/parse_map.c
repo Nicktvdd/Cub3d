@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:03:56 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:44:26 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*We have to delete this after test*/
-
-void	print_info(char **data)
-{
-	int	i;
-
-	i = 0;
-	while (data[i] != NULL)
-	{
-		ft_putendl_fd(data[i], 2);
-		i++;
-	}
-}
 
 int	data_texture_color(char *line, t_data *data, int *i)
 {

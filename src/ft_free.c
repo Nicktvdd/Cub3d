@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:09:39 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/10/27 16:08:56 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:39:24 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ void	free_all(t_data *data)
 	free_argt(data->map);
 	free_argt(data->color);
 	free_argt(data->texture);
+	free(data->player);
+	free(data->ray);
+	free(data->text_1);
+	free(data->text_2);
+	free(data->text_3);
+	free(data->text_4);
 }
