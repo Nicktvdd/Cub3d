@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:43:44 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:40:10 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_info(char **data)
 	i = 0;
 	while (data[i] != NULL)
 	{
-		ft_putendl_fd(data[i],2);
+		ft_putendl_fd(data[i], 2);
 		i++;
 	}
 }

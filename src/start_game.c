@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:38:36 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:42:48 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	start_mlx(t_data *data)
 	data->mlx = mlx_init(SCREEN_W, SCREEN_H, "NICKJUAN", true);
 	if (!data->mlx)
 		error_msg("Error");
-	if (!(data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H)))
+	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
+	if (!data->img)
 		error_msg("Error with new image");
 }
 

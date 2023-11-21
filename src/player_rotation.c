@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:48:52 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:38:24 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:46:51 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	rotate_right(t_data *data, t_player *player)
 
 void	rotate_left(t_data *data, t_player *player)
 {
-	double old_dir_x;
-	double old_plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = player->dir_x;
 	old_plane_x = player->plane_x;

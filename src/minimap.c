@@ -6,15 +6,15 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:48:07 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/11/20 15:38:06 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:53:05 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+/* #include "cub3d.h"
 
-int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
+int32_t	ft_pixel(int32_t r, int32_t g, int32_t b)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | 255);
 }
 
 void	draw_map2D(t_data *data)
@@ -34,12 +34,10 @@ void	draw_map2D(t_data *data)
 	size = MINIMAPSIZE / PIXELSIZE;
 	i = 0;
 	while (i < data->backgr->height && i < PIXELSIZE)
-		// Ensure we stay within bounds of map
 	{
 		j = 0;
 		y = i * size;
 		while (j < data->backgr->width && j < PIXELSIZE)
-			// Ensure we stay within bounds of map
 		{
 			x = j * size;
 			draw_y = y;
@@ -74,10 +72,10 @@ void	draw_player(t_data *data)
 	{
 		while (y < data->img->height)
 		{
-			uint32_t color = ft_pixel(0xFF, // R
-										100,  // G
-										0xFF, // B
-										0xFF  // A
+			uint32_t color = ft_pixel(0xFF,
+										100,
+										0xFF,
+										0xFF
 			);
 			mlx_put_pixel(data->img, x, y, color);
 			y++;
@@ -90,22 +88,16 @@ void	draw_player(t_data *data)
 void	minimap(t_data *data)
 {
 	if (!(data->backgr = mlx_new_image(data->mlx, MINIMAPSIZE, MINIMAPSIZE)))
-		// background size is here
 		error_exit(data->mlx);
-	draw_map2D(data);                                                 //
-		- drawing map
+	draw_map2D(data);
 	if (mlx_image_to_window(data->mlx, data->backgr, (0), (0)) == -1)
-		// background position here
 		error_exit(data->mlx);
-	//------------------
 	if (!(data->img = mlx_new_image(data->mlx, PLAYERSIZE, PLAYERSIZE)))
-		// p layer size is here
 		error_exit(data->mlx);
 	draw_player(data);                                                                                                                                     
-		// - drawing player
 	if (mlx_image_to_window(data->mlx, data->img, ((MINIMAPSIZE / 2)
-				- (PLAYERSIZE / 2) /* half of player */), (MINIMAPSIZE / 2
-				- (PLAYERSIZE / 2))) == -1) // player position here
+				- (PLAYERSIZE / 2)), (MINIMAPSIZE / 2
+				- (PLAYERSIZE / 2))) == -1)
 		error_exit(data->mlx);
-	// mlx_loop_hook(data->mlx, ft_hook, data->mlx);
 }
+ */
