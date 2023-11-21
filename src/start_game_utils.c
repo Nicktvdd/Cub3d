@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:05:44 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 15:38:34 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 07:33:08 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_speed(t_data *data)
 
 void	set_background(t_data *data)
 {
-	define_color(data);
+	//define_color(data);
 	draw_floor_ceiling(data);
 	// if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
 	// 	error_msg("Error");
