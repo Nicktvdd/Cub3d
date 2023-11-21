@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 16:06:02 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:44:53 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	error_exit(mlx_t* mlx);
 /* Drawing */
 void	draw_map2D(t_data *data);
 void	draw_player(t_data *data);
+int	  get_rgb(int r, int g, int b);
 
 /* Hooks */
 void	ft_hook(t_data *data);

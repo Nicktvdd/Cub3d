@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 08:28:21 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:46:12 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int check_color(t_data *data)
 {
   char **floor_string;
   char **ceiling_string;
+  int  floor_nr[3];
+  int  ceiling_nr[3];
   int i;
 
   floor_string = ft_split(data->color[0], ',');
@@ -23,13 +25,16 @@ int check_color(t_data *data)
   i = -1;
   while (++i < 3)
   {
-    if (!floor_string[i] || !ceiling_string[i] || floor_string[i] < 0 || ceiling_string[i] < 0||
-      floor_string[i] > 255 || ceiling_string[i] > 255)
+    if (!floor_string[i] || !ceiling_string[i])
+      error_msg("Error loading colors");
+    floor_nr[i] = ft_atoi(floor_string[i]);
+    ceiling_nr[i] = ft_atoi(ceiling_string[i]);
+    if (floor_nr[i] < 0 || ceiling_nr[i] < 0 ||
+      floor_nr[i] > 255 || ceiling_nr[i] > 255)
       error_msg("Error loading colors");
   }
-  printf("value: %i", ceiling_string[1]);
-  data->floor_c = get_rgb(ft_atoi(floor_string[0]), ft_atoi(floor_string[1]), ft_atoi(floor_string[2]));
-  data->ceiling_c = get_rgb(ft_atoi(ceiling_string[0]), ft_atoi(ceiling_string[1]), ft_atoi(ceiling_string[2]));
+  data->floor_c = get_rgb(floor_nr[0], floor_nr[1], floor_nr[2]);
+  data->ceiling_c = get_rgb(ceiling_nr[0], ceiling_nr[1], ceiling_nr[2]);
   free_argt(floor_string);
   free_argt(ceiling_string);
   return (0);
