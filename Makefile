@@ -38,29 +38,29 @@ GNL_UTILS = $(GNL_DIR)/get_next_line_utils.c
 all: libmlx $(NAME)
 
 libmlx:
-	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJ)
-	make -C $(LIBFT_DIR)
-	cc $(C_FLAGS) $(INC) $(OBJ) $(LIBS) $(GNL) $(GNL_UTILS) $(LIBFT) $(O_FLAGS) -o $(NAME) 
+	@make -C $(LIBFT_DIR)
+	@cc $(C_FLAGS) $(INC) $(OBJ) $(LIBS) $(GNL) $(GNL_UTILS) $(LIBFT) $(O_FLAGS) -o $(NAME) 
 
 $(OBJ_DIR)/%.o: %.c
-	mkdir -p $(OBJ_DIR)
-	cc $(C_FLAGS) $(INC) -c $< -o $@ && printf "Compiling: $(notdir $<)"
+	@mkdir -p $(OBJ_DIR)
+	@cc $(C_FLAGS) $(INC) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
 
 -include $(DEP)
 
 clean:
-	rm -rf $(OBJ_DIR)
-	rm -rf $(LIBMLX)/build
+	@rm -rf $(OBJ_DIR)
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
-	rm -rf $(NAME)
-	#make -C $(LIBFT_DIR) fclean
+	@rm -rf $(NAME)
+	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
 test: all
-	./cub3D maps/map.cub
+	@./cub3D maps/map.cub
 
 .PHONY: all, clean, fclean, re, libmlx
