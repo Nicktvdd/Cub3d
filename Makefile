@@ -46,7 +46,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	@cc $(C_FLAGS) $(INC) -c $< -o $@
+	@cc $(C_FLAGS) $(INC) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
 
 -include $(DEP)
 
