@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:07:04 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:39:18 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ uint32_t	wall_color(t_data *data, t_ray *ray)
 	index = y * (int)data->text_to_draw->height
 		* (int)data->text_to_draw->bytes_per_pixel + x
 		* (int)data->text_to_draw->bytes_per_pixel;
-	color = data->text_to_draw->pixels[index] << 24
-		| data->text_to_draw->pixels[index
+	color = data->text_to_draw->pixels[index] << 24 | data->text_to_draw->pixels[index
 		+ 1] << 16 | data->text_to_draw->pixels[index + 2] << 8 | 255;
 	return (color);
 }

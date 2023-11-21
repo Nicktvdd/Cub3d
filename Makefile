@@ -19,7 +19,7 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
 
 O_FLAGS	:= #]-DDEBUG=1
-C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code  -Ofast -g # -fsanitize=address # -Ofast  -Werror
+C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code  -Ofast -g -fsanitize=address -static-libsan # -Ofast  -Werror
 
 SRC		:=  main.c parse_map_utils.c parse_map_utils_2.c\
 			error_msg.c ft_free.c parse_map.c check_map.c \

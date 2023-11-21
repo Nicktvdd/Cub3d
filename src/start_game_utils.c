@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:05:44 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:05:15 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:41:30 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	close_game(t_data *data)
 {
 	free_all(data);
 	mlx_close_window(data->mlx);
+	exit(0);
 }
