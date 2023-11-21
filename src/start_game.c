@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 18:31:51 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:05:24 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-//TODO: Everything into this file
+
+// TODO: Everything into this file
 void	keys(t_data *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
@@ -45,7 +46,8 @@ void	start_mlx(t_data *data)
 	data->mlx = mlx_init(SCREEN_W, SCREEN_H, "NICKJUAN", true);
 	if (!data->mlx)
 		error_msg("Error");
-	if (!(data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H)))
+	data->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
+	if (!data->img)
 		error_msg("Error with new image");
 	if (mlx_image_to_window(data->mlx, data->img, (0), (0)) < 0)
 		error_msg("Error");

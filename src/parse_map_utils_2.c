@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 17:36:50 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:03:52 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_data(char **info, t_data **data)
 	char	**new_line;
 
 	new_line = ft_split(info[1], '\n');
-	if (!new_line[0] || !new_line)
+	if (!new_line || !new_line[0])
 		return (0);
 	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
 		(*data)->texture[0] = ft_strdup(new_line[0]);
@@ -54,7 +54,7 @@ int	is_data(char **info, t_data **data)
 	return (1);
 }
 
-//Checks if a character is a delimiter
+// Checks if a character is a delimiter
 int	check_delimiter(char c, char *delimiter)
 {
 	int	j;
@@ -69,7 +69,7 @@ int	check_delimiter(char c, char *delimiter)
 	return (0);
 }
 
-//Checks if a line is empty or contains only whitespace characters
+// Checks if a line is empty or contains only whitespace characters
 int	is_empty(char *line)
 {
 	int	i;

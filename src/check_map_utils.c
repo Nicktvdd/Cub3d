@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:29:37 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 16:27:58 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:02:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	check_around_zero(int i, int j, char **map)
 	return (1);
 }
 
+// TODO: Initialize len and nextlen, remove printf
 int	check_spaces(char **map)
 {
 	int	i;
@@ -32,21 +33,20 @@ int	check_spaces(char **map)
 
 	i = -1;
 	j = -1;
+	len = 0;
+	nextlen = 0;
 	while (map[++i])
 	{
 		if (map[i + 1])
 			nextlen = ft_strlen(map[i + 1]);
 		while (map[i][++j])
 		{
-			if (map[i][j] == '0')
-			{
-				if (i == 0 || j == 0 || j >= len || j >= nextlen
-					|| !check_around_zero(i, j, map))
-					return (0);
-			}
+			if (map[i][j] == '0' && (i == 0 || j == 0 || j >= len
+				|| j >= nextlen || !check_around_zero(i, j, map)))
+				return (0);
 		}
 		len = ft_strlen(map[i]);
-		j = 0;
+		j = -1;
 	}
 	return (1);
 }
@@ -92,7 +92,7 @@ int	check_last_col(char **map)
 	{
 		row_len = ft_strlen(map[i]);
 		if (row_len > 0 && (map[i][row_len - 1] != '1' && map[i][row_len
-				- 1] != ' '))
+			- 1] != ' '))
 			return (0);
 		i++;
 	}

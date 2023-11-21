@@ -3,43 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 16:47:55 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:03:41 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-int	check_first_rc(char **map)
+int	check_color(t_data *data)
 {
-	int	i;
-	int	height;
+	char	**floor_string;
+	char	**ceiling_string;
+	int		floor_nr[3];
+	int		ceiling_nr[3];
+	int		i;
 
-	i = 0;
-	height = get_map_height(map);
-	while (map[0][i] != '\0')
+	floor_string = ft_split(data->color[0], ',');
+	ceiling_string = ft_split(data->color[1], ',');
+	i = -1;
+	while (++i < 3)
 	{
-		if (map[0][i] != '1' && map[0][i] != ' ')
-			return (0);
-		i++;
+		if (!floor_string[i] || !ceiling_string[i])
+			error_msg("Error loading colors");
+		floor_nr[i] = ft_atoi(floor_string[i]);
+		ceiling_nr[i] = ft_atoi(ceiling_string[i]);
+		if (floor_nr[i] < 0 || ceiling_nr[i] < 0 || floor_nr[i] > 255
+			|| ceiling_nr[i] > 255)
+			error_msg("Error loading colors");
 	}
-	i = 0;
-	while (i < height)
-	{
-		if (map[i][0] != '1' && map[0][i] != ' ')
-			return (0);
-		i++;
-	}
-	return (1);
+	data->floor_c = get_rgb(floor_nr[0], floor_nr[1], floor_nr[2]);
+	data->ceiling_c = get_rgb(ceiling_nr[0], ceiling_nr[1], ceiling_nr[2]);
+	free_argt(floor_string);
+	free_argt(ceiling_string);
+	return (0);
 }
 
 int	check_walls(char **map)
 {
-	if (!check_first_rc(map))
-		return (0);
 	if (!check_last_row(map))
 		return (0);
 	if (!check_last_col(map))
@@ -61,7 +63,7 @@ int	check_wrong_input(char **map)
 		while (map[i][j] != '\0')
 		{
 			if (!check_delimiter(map[i][j], MAPCODES))
-				return(0);
+				return (0);
 			j++;
 		}
 		i++;

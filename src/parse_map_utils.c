@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:39:49 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:47:32 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,18 @@ int	is_empty_line(char *line)
 	return (0);
 }
 
-
 int	is_map(char *line)
 {
 	if (line[0] == '\n' || !line)
 		return (0);
 	if (!is_empty_line(line))
 		return (0);
-	// while (line[i])
-	// {
-	// 	if (!check_delimiter(line[i], SPACES) && !check_delimiter(line[i],
-	// 			MAPCODES))
-	// 		return (0);
-	// 	i++;
-	// }
 	return (1);
 }
 
 void	get_map_line(char *line, char **temp)
 {
-	char *temp2;
+	char	*temp2;
 
 	temp2 = ft_strjoin(*temp, line);
 	free(*temp);
