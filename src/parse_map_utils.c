@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:39:49 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:38:16 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	is_empty_line(char *line)
 	}
 	return (0);
 }
-
 
 int	is_map(char *line)
 {

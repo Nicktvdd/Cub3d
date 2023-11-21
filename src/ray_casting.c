@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:20:41 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/17 16:59:13 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:38:28 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ uint32_t	wall_color(t_data *data, t_ray *ray)
 	index = y * (int)data->text_to_draw->height
 		* (int)data->text_to_draw->bytes_per_pixel + x
 		* (int)data->text_to_draw->bytes_per_pixel;
-	color = data->text_to_draw->pixels[index] << 24
-		| data->text_to_draw->pixels[index + 1] << 16
-		| data->text_to_draw->pixels[index + 2] << 8 | 255;
+	color = data->text_to_draw->pixels[index] << 24 | data->text_to_draw->pixels[index
+		+ 1] << 16 | data->text_to_draw->pixels[index + 2] << 8 | 255;
 	return (color);
 }
 
@@ -56,7 +55,6 @@ void	texturing_calculations(t_data *data, t_ray *ray)
 		ray->wall_x = data->player->p_x + ray->perp_dist * ray->raydir_x;
 	ray->wall_x -= floor(ray->wall_x);
 	ray->text_x = (int)(ray->wall_x * (double)TEXTURE_W);
-	printf("%d\n", ray->text_x);
 	if (ray->side == 0 && ray->raydir_x > 0)
 		ray->text_x = TEXTURE_W - ray->text_x - 1;
 	if (ray->side == 1 && ray->raydir_y < 0)
@@ -72,7 +70,7 @@ void	draw_stuff(int x, t_ray *ray, t_data *data)
 	y = ray->draw_star;
 	step = 1.0 * ((double)TEXTURE_H) / (double)ray->line_height;
 	texture_pos = ((double)ray->draw_star - ((double)SCREEN_H / 2.0)
-			+ ((double)ray->line_height / 2.0)) * step;
+		+ ((double)ray->line_height / 2.0)) * step;
 	while (y < ray->draw_end)
 	{
 		ray->text_y = (int)texture_pos & (TEXTURE_H - 1);

@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:13:17 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:43:44 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_info(char **data)
 	i = 0;
 	while (data[i] != NULL)
 	{
-		//ft_putendl_fd(data[i],2);
+		ft_putendl_fd(data[i],2);
 		i++;
 	}
 }
@@ -29,7 +29,7 @@ void	print_info(char **data)
 int	data_texture_color(char *line, t_data *data, int *i)
 {
 	char	**info;
-	
+
 	info = ft_split(line, ' ');
 	if (!info[0])
 		return (0);
@@ -67,6 +67,7 @@ int	parse_map_info(t_data *data, int fd)
 				free(line);
 				data->texture[4] = NULL;
 				data->color[2] = NULL;
+				check_color(data);
 				return (1);
 			}
 		}
@@ -116,6 +117,5 @@ void	init_map(t_data *data, char **argv)
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
 	data->map = parse_map(fd);
-	// print_info(data->color);
 	close(fd);
 }

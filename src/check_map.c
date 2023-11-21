@@ -6,11 +6,26 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/14 12:57:47 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:24:52 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	check_color(t_data *data)
+{
+	//still need to free all
+	char **floor_string;
+	char **ceiling_string;
+	
+	floor_string = ft_split(data->color[0], ',');
+	ceiling_string = ft_split(data->color[1], ',');
+	
+	data->floor_c = get_rgb(ft_atoi(floor_string[0]), ft_atoi(floor_string[1]), ft_atoi(floor_string[2]));
+	data->ceiling_c = get_rgb(ft_atoi(ceiling_string[0]), ft_atoi(ceiling_string[1]), ft_atoi(ceiling_string[2]));
+	
+	return (0);
+}
 
 int	check_walls(char **map)
 {
@@ -37,7 +52,7 @@ int	check_wrong_input(char **map)
 		while (map[i][j] != '\0')
 		{
 			if (!check_delimiter(map[i][j], MAPCODES))
-				return(0);
+				return (0);
 			j++;
 		}
 		i++;
