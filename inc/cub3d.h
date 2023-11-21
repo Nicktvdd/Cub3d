@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 12:50:39 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:04:35 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		get_map_height(char **map);
 /*Parse utils*/
 
 int		check_file(char **argument);
-int		is_data(char *line, char **info, t_data **data);
+int		is_data(char **info, t_data **data);
 int		is_empty(char *line);
 int		check_delimiter(char c, char *delimiter);
 int		check_last_col(char **map);

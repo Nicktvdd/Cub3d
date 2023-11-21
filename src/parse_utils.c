@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 07:10:41 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:04:31 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_file(char **argument)
 }
 
 // Parses map data from a line and updates the data structure accordingly
-int	is_data(char *line, char **info, t_data **data)
+int	is_data(char **info, t_data **data)
 {
 	char	**new_line;
 
