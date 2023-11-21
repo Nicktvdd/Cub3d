@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 14:11:12 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 07:07:16 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_data(char *line, char **info, t_data **data)
 	char	**new_line;
 
 	new_line = ft_split(info[1], '\n');
-	if (!new_line[0] || !new_line)
+	if (!new_line || !new_line[0])
 		return (0);
 	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
 		(*data)->texture[0] = ft_strdup(new_line[0]);
