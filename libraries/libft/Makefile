@@ -6,7 +6,7 @@
 #    By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 16:54:41 by jpelaez-          #+#    #+#              #
-#    Updated: 2023/11/06 15:39:53 by nvan-den         ###   ########.fr        #
+#    Updated: 2023/11/21 15:54:06 by nvan-den         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,19 +41,19 @@ ft_lstlast.o ft_lstadd_back.o\
 all: $(NAME)
 
 $(NAME):
-	cc -c $(FLAGS) $(SRC) $(HEADER) 
-	ar rc $(NAME) $(OBJECT)
-	ranlib $(NAME) 
+	@cc -c $(FLAGS) $(SRC) $(HEADER) 
+	@ar rc $(NAME) $(OBJECT)
+	@ranlib $(NAME) 
 	
 bonus:
-	cc -c $(FLAGS) $(SRCB) $(HEADER) 
-	ar rc $(NAME) $(OBJECTB)
-	ranlib $(NAME) 
+	@cc -c $(FLAGS) $(SRCB) $(HEADER) 
+	@ar rc $(NAME) $(OBJECTB)
+	@ranlib $(NAME) 
 	
 clean:
-	rm -f $(OBJECT) $(OBJECTB)
+	@rm -f $(OBJECT) $(OBJECTB)
 
 fclean: clean
-	   rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
