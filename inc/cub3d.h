@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:24:14 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:25:41 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ void				ft_hook(t_data *data);
 
 /*Draw stuff*/
 void				draw_floor_ceiling(t_data *data);
-void				define_color(t_data *data);
 void				set_background(t_data *data);
 void				render(t_data *data);
 
