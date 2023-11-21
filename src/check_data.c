@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:04:31 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/20 16:43:22 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:09:35 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_format(char **texture)
 	{
 		if (!check_text_path(texture[i]))
 			return (0);
-        i++;
+		i++;
 	}
 	return (1);
 }
