@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 14:00:09 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:27:40 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	render(t_data *data)
 {
 	ft_memset(data->img->pixels, 0, data->img->width * data->img->height
 		* sizeof(int32_t));
-	set_background(data);
+	draw_floor_ceiling(data);
 	ray_casting(data);
 	set_speed(data);
 }

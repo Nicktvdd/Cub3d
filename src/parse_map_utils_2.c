@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 17:13:48 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:52:45 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,30 @@ int	check_file(char **argument)
 	return (0);
 }
 
+void	copy_texture(char **info, char **new_line, t_data **data)
+{
+	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
+	{
+		if (!(*data)->texture[0])
+			(*data)->texture[0] = ft_strdup(new_line[0]);
+	}
+	else if (ft_strnstr(info[0], "SO", ft_strlen(info[0])))
+	{
+		if (!(*data)->texture[1])
+			(*data)->texture[1] = ft_strdup(new_line[0]);
+	}
+	else if (ft_strnstr(info[0], "WE", ft_strlen(info[0])))
+	{
+		if (!(*data)->texture[2])
+			(*data)->texture[2] = ft_strdup(new_line[0]);
+	}
+	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
+	{
+		if (!(*data)->texture[3])
+			(*data)->texture[3] = ft_strdup(new_line[0]);
+	}
+}
+
 // Parses map data from a line and updates the data structure accordingly
 int	is_data(char **info, t_data **data)
 {
@@ -34,13 +58,13 @@ int	is_data(char **info, t_data **data)
 	if (!new_line || !new_line[0])
 		return (0);
 	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
-		(*data)->texture[0] = ft_strdup(new_line[0]);
+		copy_texture(info, new_line, data);
 	else if (ft_strnstr(info[0], "SO", ft_strlen(info[0])))
-		(*data)->texture[1] = ft_strdup(new_line[0]);
+		copy_texture(info, new_line, data);
 	else if (ft_strnstr(info[0], "WE", ft_strlen(info[0])))
-		(*data)->texture[2] = ft_strdup(new_line[0]);
+		copy_texture(info, new_line, data);
 	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
-		(*data)->texture[3] = ft_strdup(new_line[0]);
+		copy_texture(info, new_line, data);
 	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
 		(*data)->color[0] = ft_strdup(new_line[0]);
 	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))

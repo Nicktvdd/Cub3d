@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:05:31 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:20:43 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	parse_map_info(t_data *data, int fd)
 			if (counter == 6)
 			{
 				free(line);
-				data->texture[4] = NULL;
-				data->color[2] = NULL;
 				check_color(data);
 				return (1);
 			}
@@ -90,6 +88,18 @@ char	**parse_map(int fd)
 	return (final_map);
 }
 
+void	init_info(t_data *data)
+{
+	data->texture[0] = NULL;
+	data->texture[1] = NULL;
+	data->texture[2] = NULL;
+	data->texture[3] = NULL;
+	data->texture[4] = NULL;
+	data->color[0] = NULL;
+	data->color[1] = NULL;
+	data->color[2] = NULL;
+}
+
 void	init_map(t_data *data, char **argv)
 {
 	int	fd;
@@ -105,7 +115,7 @@ void	init_map(t_data *data, char **argv)
 	data->color = (char **)malloc(sizeof(char *) * 3);
 	if (!data->color)
 		error_msg("Allocation error");
-	data->color[1] = NULL;
+	init_info(data);
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
 	data->map = parse_map(fd);

@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:00:37 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:33:57 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void				error_msg(char *msg);
 void				print_info(char **data);
 void				start_game(t_data *data);
 void				error_exit(mlx_t *mlx);
+void				error_free(char *msg, t_data *data);
 
 /* Drawing */
 void				draw_map2D(t_data *data);
