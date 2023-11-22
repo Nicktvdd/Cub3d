@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 17:17:44 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:55:56 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	init_map(t_data *data, char **argv)
 	data->color = (char **)malloc(sizeof(char *) * 3);
 	if (!data->color)
 		error_msg("Allocation error");
+	data->color[1] = NULL;
 	if (!parse_map_info(data, fd))
 		error_msg("Wrong map information");
 	data->map = parse_map(fd);

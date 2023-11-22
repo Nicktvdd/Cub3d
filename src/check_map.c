@@ -6,11 +6,37 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:03:41 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:56:29 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	valid_color(t_data *data)
+{
+	int	i;
+	int	j;
+	int	comma_count;
+	
+	i = 0;
+	j = 0;
+	comma_count = 0;
+		if (!data->color[i])
+			error_msg("fuck you");
+	while (data->color[i])
+	{
+		while (data->color[i][j])
+		{
+			if (data->color[i][j] == ',')
+				comma_count++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	if (comma_count != 4)
+		error_msg("Color formatting error");
+}
 
 int	check_color(t_data *data)
 {
@@ -20,6 +46,9 @@ int	check_color(t_data *data)
 	int		ceiling_nr[3];
 	int		i;
 
+	if (!data->color[0] || !data->color[1])
+		error_msg("FUCKSHITBITCHFUCK\n\n");
+	valid_color(data);
 	floor_string = ft_split(data->color[0], ',');
 	ceiling_string = ft_split(data->color[1], ',');
 	i = -1;
