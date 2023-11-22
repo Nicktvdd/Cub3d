@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_player_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:50:24 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 12:43:47 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:23:10 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int	player_position(t_player *player, char **map)
 {
 	int	i;
 	int	j;
+	int	number_player;
 
 	i = 0;
+	number_player = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -65,13 +67,16 @@ int	player_position(t_player *player, char **map)
 			{
 				player->p_x = (double)j;
 				player->p_y = (double)i;
-				return (1);
+				number_player++;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	if (number_player == 1)
+		return (1);
+	else
+		return (0);
 }
 
 int	player_orientation(t_player *player, char **map)

@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:10:14 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 17:33:16 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:22:43 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	set_player(t_data *data)
 	if (!data->player)
 		error_msg("Malloc Error");
 	if (!player_position(data->player, data->map))
-		error_msg("Error, no player position");
+		error_msg("Player position error");
 	if (!player_orientation(data->player, data->map))
 		error_msg("Erros invalid orientation");
 	data->map_height = get_map_height(data->map);
