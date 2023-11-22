@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:09:39 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 16:59:14 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:05:37 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	free_all(t_data *data)
 	free_argt(data->texture);
 	free(data->player);
 	free(data->ray);
-	free(data->text_1);
-	free(data->text_2);
-	free(data->text_3);
-	free(data->text_4);
+	mlx_delete_texture(data->text_1);
+	mlx_delete_texture(data->text_2);
+	mlx_delete_texture(data->text_3);
+	mlx_delete_texture(data->text_4);
 }
