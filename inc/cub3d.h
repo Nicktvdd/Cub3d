@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:25:41 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:00:37 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int					check_last_row(char **map);
 void				check_data(t_data *data);
 int					check_color(t_data *data);
 int					check_spaces(char **map);
+char				*find_map(int fd);
 
 /*Error tools*/
 void				error_msg(char *msg);

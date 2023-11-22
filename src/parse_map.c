@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 17:17:44 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:04:06 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ char	**parse_map(int fd)
 	char	*line;
 	char	*full_map;
 	char	**final_map;
+	int		i;
 
+	i = 0;
 	full_map = ft_strdup("");
-	line = get_next_line(fd);
+	line = find_map(fd);
 	while (line)
 	{
 		if (is_map(line))
