@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:52:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:03:48 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:56:47 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	error_msg(char *msg)
 {
+	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(msg, 2);
 	exit(1);
 }
