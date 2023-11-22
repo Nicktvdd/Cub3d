@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:51:17 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:05:24 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:00:09 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	start_game(t_data *data)
 	start_mlx(data);
 	mlx_loop_hook(data->mlx, (void *)keys, data);
 	mlx_loop_hook(data->mlx, (void *)render, data);
+	mlx_close_hook(data->mlx, (void *)close_game, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 }
