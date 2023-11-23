@@ -1,11 +1,10 @@
+F 220,100,0
+C 225,30,0
+
 NO ../Cub3d/textures/eagle.png
 SO ../Cub3d/textures/greystone.png
 WE ../Cub3d/textures/wood.png
 EA ../Cub3d/textures/redbrick.png
-
-F 220,100,0
-C 225,30,0
-
 
 
 1111111111111111111111111

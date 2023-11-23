@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:52:45 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:08:41 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 // TODO: check map pre-data
 // Checks the file extension if .cub - simplified
-int	check_file(char **argument)
-{
-	int	len;
 
-	len = ft_strlen(argument[1]);
-	if (argument[1][--len] == 'b' && argument[1][--len] == 'u'
-		&& argument[1][--len] == 'c' && argument[1][--len] == '.')
-		return (1);
-	return (0);
+void	copy_color(char **info, char **new_line, t_data **data)
+{
+	if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
+	{
+		if (!(*data)->color[0])
+			(*data)->color[0] = ft_strdup(new_line[0]);
+	}
+	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
+	{
+		if (!(*data)->color[1])
+			(*data)->color[1] = ft_strdup(new_line[0]);
+	}
 }
 
 void	copy_texture(char **info, char **new_line, t_data **data)
@@ -66,9 +70,9 @@ int	is_data(char **info, t_data **data)
 	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
 		copy_texture(info, new_line, data);
 	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
-		(*data)->color[0] = ft_strdup(new_line[0]);
+		copy_color(info, new_line, data);
 	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
-		(*data)->color[1] = ft_strdup(new_line[0]);
+		copy_color(info, new_line, data);
 	else
 	{
 		free_argt(new_line);

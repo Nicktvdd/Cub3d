@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:33:20 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:06:57 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_color(t_data *data)
 	int		i;
 
 	if (!data->color[0] || !data->color[1])
-		error_free("Not valid information", data);
+		error_msg("Not valid information");
 	valid_color(data);
 	floor_string = ft_split(data->color[0], ',');
 	ceiling_string = ft_split(data->color[1], ',');
