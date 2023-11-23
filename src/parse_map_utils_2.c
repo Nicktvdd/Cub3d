@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:05:53 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:58:50 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 void	copy_color(char **info, char **new_line, t_data **data)
 {
-	if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
+	if (ft_strncmp(info[0], "F", ft_strlen(info[0])) == 0)
 	{
 		if (!(*data)->color[0])
 			(*data)->color[0] = ft_strdup(new_line[0]);
 	}
-	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "C", ft_strlen(info[0])) == 0)
 	{
 		if (!(*data)->color[1])
 			(*data)->color[1] = ft_strdup(new_line[0]);
@@ -31,22 +31,22 @@ void	copy_color(char **info, char **new_line, t_data **data)
 
 void	copy_texture(char **info, char **new_line, t_data **data)
 {
-	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
+	if (ft_strncmp(info[0], "NO", ft_strlen(info[0])) == 0)
 	{
 		if (!(*data)->texture[0])
 			(*data)->texture[0] = ft_strdup(new_line[0]);
 	}
-	else if (ft_strnstr(info[0], "SO", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "SO", ft_strlen(info[0])) == 0)
 	{
 		if (!(*data)->texture[1])
 			(*data)->texture[1] = ft_strdup(new_line[0]);
 	}
-	else if (ft_strnstr(info[0], "WE", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "WE", ft_strlen(info[0])) == 0)
 	{
 		if (!(*data)->texture[2])
 			(*data)->texture[2] = ft_strdup(new_line[0]);
 	}
-	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "EA", ft_strlen(info[0])) == 0)
 	{
 		if (!(*data)->texture[3])
 			(*data)->texture[3] = ft_strdup(new_line[0]);
@@ -61,17 +61,17 @@ int	is_data(char **info, t_data **data)
 	new_line = ft_split(info[1], '\n');
 	if (!new_line || !new_line[0])
 		return (0);
-	if (ft_strnstr(info[0], "NO", ft_strlen(info[0])))
+	if (ft_strncmp(info[0], "NO", ft_strlen(info[0])) == 0)
 		copy_texture(info, new_line, data);
-	else if (ft_strnstr(info[0], "SO", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "SO", ft_strlen(info[0])) == 0)
 		copy_texture(info, new_line, data);
-	else if (ft_strnstr(info[0], "WE", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "WE", ft_strlen(info[0])) == 0)
 		copy_texture(info, new_line, data);
-	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "EA", ft_strlen(info[0])) == 0)
 		copy_texture(info, new_line, data);
-	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "F", ft_strlen(info[0])) == 0)
 		copy_color(info, new_line, data);
-	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
+	else if (ft_strncmp(info[0], "C", ft_strlen(info[0])) == 0)
 		copy_color(info, new_line, data);
 	else
 	{
