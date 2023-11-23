@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:33:19 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:52:45 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:10:54 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	is_data(char **info, t_data **data)
 		copy_texture(info, new_line, data);
 	else if (ft_strnstr(info[0], "EA", ft_strlen(info[0])))
 		copy_texture(info, new_line, data);
-	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])))
+	else if (ft_strnstr(info[0], "F", ft_strlen(info[0])) && !(*data)->color[0])
 		(*data)->color[0] = ft_strdup(new_line[0]);
-	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])))
+	else if (ft_strnstr(info[0], "C", ft_strlen(info[0])) && !(*data)->color[1])
 		(*data)->color[1] = ft_strdup(new_line[0]);
 	else
 	{
