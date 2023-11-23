@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:04:31 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/23 14:59:40 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:10:05 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	check_text_path(char *argument)
 	int	len;
 
 	len = ft_strlen(argument);
-	ft_putendl_fd(argument,2);
 	if (argument[--len] == 'g' && argument[--len] == 'n'
 		&& argument[--len] == 'p' && argument[--len] == '.')
 		return (1);
