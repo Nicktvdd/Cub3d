@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/23 14:06:57 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:55:01 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	valid_color(t_data *data)
 		{
 			if (data->color[i][j] == ',')
 				comma_count++;
+			else if (!ft_isdigit(data->color[i][j]))
+				error_msg("Non-digit in color");
 			j++;
 		}
 		j = 0;
