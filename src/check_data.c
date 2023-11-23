@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:04:31 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/21 15:09:35 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:02:07 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,15 @@ void	check_data(t_data *data)
 {
 	if (!check_format(data->texture))
 		error_msg("Invalid texture format");
+}
+
+int	check_file(char **argument)
+{
+	int	len;
+
+	len = ft_strlen(argument[1]);
+	if (argument[1][--len] == 'b' && argument[1][--len] == 'u'
+		&& argument[1][--len] == 'c' && argument[1][--len] == '.')
+		return (1);
+	return (0);
 }

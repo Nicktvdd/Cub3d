@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:35:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:03:56 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:06:44 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ char	*find_map(int fd)
 		line = get_next_line(fd);
 	}
 	if (!check_wrong_line(line))
-		error_msg("Invalid char");
+		error_msg("Not valid information");
 	return (line);
 }
