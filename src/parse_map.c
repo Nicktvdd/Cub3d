@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:47:06 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:01:14 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	data_texture_color(char *line, t_data *data, int *i)
 	char	**info;
 
 	info = ft_split(line, ' ');
-	if (!info[0] )
+	if (!info[0])
 		return (0);
-	if (info[1] && info[2] && info[2])
-		error_msg("Map information error");
+	if (info[1] && (info[2] && is_space_line(info[2])))
+		error_msg("Wrong map information");
 	if (is_data(info, &data))
 	{
 		free_argt(info);
