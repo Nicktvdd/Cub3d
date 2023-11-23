@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:22:10 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:33:57 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:02:02 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ void				check_data(t_data *data);
 int					check_color(t_data *data);
 int					check_spaces(char **map);
 char				*find_map(int fd);
+int					is_empty_line(char *line);
+int					is_space_line(char *line);
 
 /*Error tools*/
 void				error_msg(char *msg);

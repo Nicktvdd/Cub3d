@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:04:31 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:55:21 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:04:19 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,24 @@ int	check_file(char **argument)
 	if (argument[1][--len] == 'b' && argument[1][--len] == 'u'
 		&& argument[1][--len] == 'c' && argument[1][--len] == '.')
 		return (1);
+	return (0);
+}
+
+int	is_space_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (!line)
+		return (0);
+	else
+	{
+		while (line[i])
+		{
+			if (!check_delimiter(line[i], " \f\n\r\t\v\0"))
+				return (1);
+			i++;
+		}
+	}
 	return (0);
 }
