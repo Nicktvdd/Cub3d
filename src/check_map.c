@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:14:12 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:08:27 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:00:38 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	valid_color(t_data *data)
 	int	i;
 	int	j;
 	int	comma_count;
-	
+
 	i = 0;
 	j = 0;
 	comma_count = 0;
-		if (!data->color[i])
-			error_msg("Color formatting error");
+	if (!data->color[i])
+		error_msg("Color formatting error");
 	while (data->color[i])
 	{
 		while (data->color[i][j])
@@ -48,8 +48,6 @@ int	check_color(t_data *data)
 	int		ceiling_nr[3];
 	int		i;
 
-	if (!data->color[0] || !data->color[1])
-		error_msg("Invalid information");
 	valid_color(data);
 	floor_string = ft_split(data->color[0], ',');
 	ceiling_string = ft_split(data->color[1], ',');
