@@ -6,7 +6,7 @@
 /*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:50:24 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 13:23:10 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:55:25 by jpelaez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	player_position(t_player *player, char **map)
 		{
 			if (check_delimiter(map[i][j], PLAYER_P))
 			{
-				player->p_x = (double)j;
-				player->p_y = (double)i;
+				player->p_x = (double)j + 0.2;
+				player->p_y = (double)i + 0.2;
 				number_player++;
 			}
 			j++;
