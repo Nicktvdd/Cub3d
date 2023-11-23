@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpelaez- <jpelaez-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:57:50 by jpelaez-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:20:43 by jpelaez-         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:04:25 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	data_texture_color(char *line, t_data *data, int *i)
 	char	**info;
 
 	info = ft_split(line, ' ');
-	if (!info[0])
+	if (!info[0] || info[2])
 		return (0);
 	if (is_data(info, &data))
 	{
@@ -47,7 +47,7 @@ int	parse_map_info(t_data *data, int fd)
 	while (line)
 	{
 		if (data_texture_color(line, data, &counter))
-		{
+		{ 
 			if (counter == 6)
 			{
 				free(line);
