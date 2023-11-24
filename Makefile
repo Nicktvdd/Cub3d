@@ -11,15 +11,18 @@ OBJ_DIR	:= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 INC		:= -I $(HEADER) -I $(LIBMLX)/include
+
 #School Macs#
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+
 #For Linux#
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+
 #MacHome
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
 
 O_FLAGS	:= #]-DDEBUG=1
-C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code  -Ofast -g #-fsanitize=address # -Ofast  -Werror
+C_FLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast #-fsanitize=address
 
 SRC		:=  main.c parse_map_utils.c parse_map_utils_2.c\
 			error_msg.c ft_free.c parse_map.c check_map.c \
