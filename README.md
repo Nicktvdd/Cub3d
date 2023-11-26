@@ -11,7 +11,6 @@ Cub3D is a 3D graphics project that utilizes the raycasting technique to create 
 - [Usage](#usage)
 - [Controls](#controls)
 - [Map Format](#map-format)
-- [Screenshots](#screenshots)
 - [Acknowledgments](#acknowledgments)
 
 ## Introduction
@@ -39,31 +38,32 @@ Cub3D is inspired by the classic game Wolfenstein 3D and serves as an introducti
    ```bash
    git clone https://github.com/your-username/Cub3D.git
    cd Cub3D
-Build the project
-bash
-Copy code
-make
-Usage
+### Build the Project
+1. Clone the repository
+   ```bash
+   git clone https://github.com/your-username/Cub3D.git
+   cd Cub3D
+   make
+
+### Usage
 Run the executable with a provided map file:
+  ```bash
+  ./Cub3D maps/map.cub
+```
 
-bash
-Copy code
-./Cub3D maps/map.cub
-Controls
-W: Move forward
-A: Strafe left
-S: Move backward
-D: Strafe right
-→: Rotate right
-←: Rotate left
-ESC: Exit the game
-Map Format
-The map file specifies the layout of the 3D maze and includes information about textures, colors, and the starting position of the player. Refer to the Map Format Guide for details.
+### Controls
+- **W:** Move forward
+- **A:** Strafe left
+- **S:** Move backward
+- **D:** Strafe right
+- **→:** Rotate right
+- **←:** Rotate left
+- **ESC:** Exit the game
 
-Screenshots
-Include screenshots or gifs showcasing the gameplay or unique features of your Cub3D project.
+### Map Format
+The map file specifies the layout of the 3D maze and includes information about textures, colors, and the starting position of the player.
 
-Acknowledgments
+### Acknowledgments
 This project was completed as part of the curriculum at 42 School.
 Thanks to the creators of Wolfenstein 3D for the inspiration.
 A massive thank you to [juan](https://github.com/jestebanpelaez18) for being a great teammate and hard worker.
