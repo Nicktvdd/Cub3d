@@ -2,6 +2,9 @@
 
 Cub3D is a 3D graphics project that utilizes the raycasting technique to create a simple yet immersive first-person perspective game. This project is part of the curriculum at 42 School.
 
+![cub3d](https://github.com/Nicktvdd/Cub3d/assets/5775657/8e83589c-4af2-4ef9-b54f-432d0cb2708b)
+
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
