@@ -26,7 +26,6 @@ Cub3D is inspired by the classic game Wolfenstein 3D and serves as an introducti
 - Textured walls and sprites
 - Floor and ceiling colors
 - Player movement and rotation
-- Dynamic lighting effects
 
 ## Getting Started
 
